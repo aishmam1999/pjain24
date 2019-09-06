@@ -1,6 +1,6 @@
 # pjain24
 <h1> Palash Jain</h1>
-![MyName](images/Name.jpg "Palash Jain")
+![MyName](images/Name.jpeg "ME")
 
 ![MyHobby](images/Hobby.jpeg "Vegeta")
 ***

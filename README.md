@@ -21,7 +21,7 @@ It doesn't look like it now, but I did swimming for State Level from Rajasthan, 
 ***
 # Git tutorial
 
-![Git](images/git.jpg "version")
+![Git](images/git.JPG "version")
 ![Git Tutorial](images/badge.PNG "Result")
 
 ***

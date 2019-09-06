@@ -1,9 +1,10 @@
 
 # pjain24
 <h1> Palash Jain</h1>
-![MyName](images/Name.jpg "Palash Jain")
 
-![Prince of all Sayans](images/vegeta.jpg "Vegeta")
+![MyName](images/Name.jpeg "Palash Jain")
+
+![MyHobby](images/Hobby.jpeg "Hobby")
 ***
 # Where are you from?
 

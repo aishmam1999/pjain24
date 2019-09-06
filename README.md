@@ -1,8 +1,6 @@
 # pjain24
 <h1> Palash Jain</h1>
 ![MyHobby](images/Hobby.jpeg "Vegeta")
-#Hobby
-![MyHobby](images/Hobby.jpeg "Vegeta")
 ***
 # Where are you from?
 

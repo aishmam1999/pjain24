@@ -1,6 +1,9 @@
+
 # pjain24
 <h1> Palash Jain</h1>
-![MyHobby](images/Hobby.jpeg "Vegeta")
+![MyName](images/Name.jpg "Palash Jain")
+
+![Prince of all Sayans](images/vegeta.jpg "Vegeta")
 ***
 # Where are you from?
 
@@ -17,7 +20,7 @@ It doesn't look like it now, but I did swimming for State Level from Rajasthan, 
 ***
 # Git tutorial
 
-![Git Tutorial](images/badge.PNG "Result")
+![Git Tutorial](images/badge.jpg "Result")
 
 ***
 # Links

@@ -1,13 +1,13 @@
 # Part 1
 
 
-![Part1] (https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_1.JPG)
+![Part1](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_1.JPG)
 
 
 ***
 # Part 2
 
-![part_2_C](Cloud Computing/Assignment 2/images/part_2_C.jpg "part 2_C")
+![part_2_C](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_C.jpg)
 
 ![part_2_ubuntu](images/part_2_ubuntu.jpg "part_2_ubuntu")
 

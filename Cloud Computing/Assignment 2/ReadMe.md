@@ -1,7 +1,7 @@
 # Part 1
 
 
-![Part1] (Cloud Computing/Assignment 2/images/Part_1.JPG "Part_1")
+![Part1] (https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_1.JPG "Part_1")
 
 
 ***

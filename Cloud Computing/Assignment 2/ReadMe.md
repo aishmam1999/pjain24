@@ -8,23 +8,25 @@
 # Part 2
 
 
-![Part1](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_C.jpg)
+![Part2](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_C.JPG)
 
 
 
-![part_2_ubuntu](images/part_2_ubuntu.jpg "part_2_ubuntu")
+![part_2_ubuntu](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_ubuntu.JPG)
 
-![part2_444_Bio](images/part2_444_Bio "part2_444_Bio")
+![part2_444_Bio](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part2_444_Bio.JPG)
 
-![part2_444_c](images/part2_444_c.jpg "part2_444_c")
+![part2_444_c](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part2_444_c.JPG)
 
 # Part 3
 
-![Part_3_Bio](images/Part_3_Bio.jpg "Part_3_Bio")
+# Part 4
 
-![Part_3_build_ubuntu](images/Part_3_build_ubuntu.jpg "Part_3_build_ubuntu")
+![Part_4_Bio](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_3_Bio.JPG)
 
-![Part_3_C](images/Part_3_C.jpg "Part_3_C")
+![Part_4_build_ubuntu](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_3_build_ubuntu.JPG)
+
+![Part_4_C](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/Part_3_C.JPG)
 
 ***
 

@@ -7,7 +7,10 @@
 ***
 # Part 2
 
-![part_2_C](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_C.jpg)
+
+![Part1](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%202/images/part_2_C.jpg)
+
+
 
 ![part_2_ubuntu](images/part_2_ubuntu.jpg "part_2_ubuntu")
 

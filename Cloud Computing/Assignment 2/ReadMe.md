@@ -1,6 +1,6 @@
 # Part 1
 
-![Part1](pjain24/Cloud Computing/Assignment 2/images/Part_1.jpg "Part_1")
+![Part1](/Cloud Computing/Assignment 2/images/Part_1.jpg "Part_1")
 
 
 ***

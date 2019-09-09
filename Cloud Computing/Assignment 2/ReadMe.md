@@ -1,5 +1,6 @@
 # Part 1
 
+
 ![Part1](Cloud Computing/Assignment 2/images/Part_1.JPG "Part_1")
 
 

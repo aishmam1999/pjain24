@@ -4,7 +4,7 @@
 
 
 ***
-# Part 2 (AWS_Verion_Installed)
+# Part 2 (AWS_Version_Installed)
 
 ![aws_version](https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/Assignment%203/aws_version.JPG "aws_version")
 

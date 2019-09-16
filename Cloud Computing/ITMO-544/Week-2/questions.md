@@ -7,8 +7,7 @@
 
 * Server with multiple backends: A server receives the query and forward it to different backends (content servers). Then the server receives the backend's replies and compose them into a final reply.
 
-* Server tree: There is a main root server. Useful when managing large datasets. The root server manage the outside query and forward it to its two breachs,
-the parents server. Parents servers forwards the query to its leaf servers respectivaly (Down-Forwarding), which provide the service. When the leaf servers are done, they send up the reply to its parent server, who filter and sort the result and then forward it to the root server. The root server takes the results from the parents server and composes the final reply.
+* Server tree: This composition consists of one server with multiple backends. Here the request received by server will be divided into different tasks and each tasks is performed by different backends. Server will combine output of each backend to produce the final response for the request received.
 
 ### 3. What are the three patterns discussed for storing state? 
 (Database System)
@@ -19,7 +18,7 @@ The state is sharden
 
 ### 4. Sometimes a master server does not reply with an answer but instead replies with where the answer can be found. What are the benefits of this method?
 
-The master server replies with a list of which machines have the data. The main benefit is the master server does not become overleaded due to receiving and relaying huge datasets.
+The main benefit is the master server does not become overleaded due to receiving and relaying huge datasets.
 
 
 ### 5. Section 1.4 describes a distributed file system, including an example of how reading terabytes of data would work. How would writing terabytes of data work?

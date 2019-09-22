@@ -1,5 +1,21 @@
-### Console 
-![aws console](https://github.com/illinoistech-itm/dgalanberasaluce/blob/master/itmo-544/images/01-InitialAWSconsole.PNG)
+# AWS Intro Assignment
 
-### Webserver
-![aws apache example](https://github.com/illinoistech-itm/dgalanberasaluce/blob/master/itmo-544/images/02-Apache.PNG)
+## IAM
+
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/user.PNG" alt="" style="width: 400px;"/> |
+|:--:| 
+| *AWS Console Screenshot* |
+
+
+## Apache Welcome Page
+
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/Apache.PNG" alt="" style="width: 400px;"/> |
+|:--:| 
+| *Running EC2 instance screenshot* |
+
+
+## Terminated
+
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/ECSInstance.PNG" alt="" style="width: 400px;"/> |
+|:--:| 
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/terminated.PNG" alt="" style="width: 400px;"/> |

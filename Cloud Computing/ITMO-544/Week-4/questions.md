@@ -21,7 +21,7 @@
 
 
 ### 4. Give an example of a partially implemented process in your current environment. What would you do to fully implement it?
-To imrpove a process I would apply ISO 9001 (simplifying i.e Plan-Do-Check-Act). Always there must be a continuous review of the process to detect errors and lacks and to improve it.
+To improve a process I would apply ISO 9001 (simplifying i.e Plan-Do-Check-Act). Always there must be a continuous review of the process to detect errors and lacks and to improve it.
 
 
 ### 5. Why might you not want to solve an issue by coding the solution yourself?

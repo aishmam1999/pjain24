@@ -2,7 +2,7 @@
 
 ## IAM
 
-| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/user.PNG" alt="" style="width: 400px;"/> |
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/IAM.PNG" alt="" style="width: 400px;"/> |
 |:--:| 
 | *AWS Console Screenshot* |
 

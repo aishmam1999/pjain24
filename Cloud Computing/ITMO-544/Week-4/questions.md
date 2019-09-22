@@ -1,11 +1,16 @@
 ## Chapter 02 - Designing for Operations
 
 ### 1. Why is design for operations so important?
-Because the majority of the life cycle of the service is spent operating the service. Design for operating from the begining is required to enhace the system against future features
+   * In full life cycle of any software or system operations is the biggest cycle. Hence optimal operations design is important.
+   * A good design for operations is cost effective and increases productivity of any organization or team.
+   * System will be more reliable, stable and consistent.
 
 
 ### 2. How is automated configuration typically supported?
-It is usually supported by using a text file with a well-defined format. Reading and updating the state can be done through an API or the configuration file.
+   * Using Text files
+   * Binary blob files
+   * Using API
+   * From source code repository
 
 
 ### 3. List the important factors for redundancy through replication.
@@ -22,7 +27,7 @@ To imrpove a process I would apply ISO 9001 (simplifying i.e Plan-Do-Check-Act).
 ### 5. Why might you not want to solve an issue by coding the solution yourself?
 For so many reasons:
 - Every company has its own coding standard, internal infrastructure and overall vision of the future software architecture.
-- The code can have bugs or imply bugs to the overall system.
+- Bugs in your code may result in developers not taking any responsibility for even their piece of code
 - Developers may not need to care about operational features 
 
 

@@ -3,19 +3,19 @@
 ### 1. Compare IaaS, PaaS, and SaaS on the basis of cost, configurability, and control.
 
 Cost:
-*(i)Iaas helps in eliminating cost of setting up infra or data center. You pay for storage, network and usage. Investment required for platform setup and maintenance, application development and maintenance. 
-*(ii)Paas has along with infra you can lower cost of platform setup, maintenance and patching. It operates on pay-per use.
-*(iii)Saas has no infra cost, no platform cost and zero software development or maintenance cost. It is pay-per user. 
+*Iaas helps in eliminating cost of setting up infra or data center. You pay for storage, network and usage. Investment required for platform setup and maintenance, application development and maintenance. 
+*Paas has along with infra you can lower cost of platform setup, maintenance and patching. It operates on pay-per use.
+*Saas has no infra cost, no platform cost and zero software development or maintenance cost. It is pay-per user. 
 
 Control:
-*(i)Iaas has full control of system and data. You can easily add remove hardware as needed
-*(ii)Paas has control for your systems and data. You may or may not have full access to system components
-*(iii) Saas has no control of system. Very limited access to system libraries until exposed by provider. 
+*Iaas has full control of system and data. You can easily add remove hardware as needed
+*Paas has control for your systems and data. You may or may not have full access to system components
+*Saas has no control of system. Very limited access to system libraries until exposed by provider. 
 
 configurability:
-*(i)Iaas can configure full system as per your need and requirements. 
-*(ii)Paas is very limited configurable but not expandable at all.  
-*(iii)Saas has no scope of configuration until and unless huge business impact for provider. 
+*Iaas can configure full system as per your need and requirements. 
+*Paas is very limited configurable but not expandable at all.  
+*Saas has no scope of configuration until and unless huge business impact for provider. 
 
 
 

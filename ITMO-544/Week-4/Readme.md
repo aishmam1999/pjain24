@@ -2,14 +2,14 @@
 
 ## IAM
 
-| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/IAM.PNG" alt="" style="width: 400px;"/> |
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/ITMO-544/Week-4/images/IAM.PNG" alt="" style="width: 400px;"/> |
 |:--:| 
 | *AWS Console Screenshot* |
 
 
 ## Apache Welcome Page
 
-| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/Apache.PNG" alt="" style="width: 400px;"/> |
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/ITMO-544/Week-4/images/Apache.PNG" alt="" style="width: 400px;"/> |
 |:--:| 
 | *Running EC2 instance screenshot* |
 
@@ -18,4 +18,4 @@
 
 
 
-| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/Cloud%20Computing/ITMO-544/Week-4/images/terminated1.PNG" alt="" style="width: 400px;"/> |
+| <img src="https://github.com/illinoistech-itm/pjain24/blob/master/ITMO-544/Week-4/images/terminated1.PNG" alt="" style="width: 400px;"/> |

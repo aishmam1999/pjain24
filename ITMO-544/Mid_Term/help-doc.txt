@@ -1,0 +1,24 @@
+Single Tier Application 
+
+Purpose - Recieve Customer Data and an Image Upload
+Store Data 
+    name 
+    phone
+    Email
+
+Store Image
+
+Use an image processing Library (thumbnail 100*100)
+Notify customer that processing is done (SMS - Email)  (Not doing that now)
+Update Customer Record (Not doing that either now)
+Gallary page
+
+Index.php
+process.php
+gallery.php
+
+PHP is quick and SDK have more information (According to Professor)
+
+
+aws ec2 describe security-groups
+ssh -i ./classkey.pam ubuntu@3.83.something.something

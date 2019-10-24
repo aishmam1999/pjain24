@@ -6,5 +6,5 @@ sudo systemctl start apache2
 
 sudo apt-get install php 
 # make sure libapache2-mod-php7.2 is there
-sudo apt-get install php-gd mysql-server
+sudo apt-get install php-gd mysql-server php-mysql php-mysql mysql-server
 #library for image processing 

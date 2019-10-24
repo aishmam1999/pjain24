@@ -1,3 +1,21 @@
+//Arpita notes
+vanilla instance = aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d
+
+
+Querry to check all 7 arguments are there 
+clock sync
+instance run
+wait command
+create load balancer 
+configure health check for load balancer
+coockie stickyness policy
+Registring EC2 instance with loadbalancer
+creatind RDB database
+
+
+
+
+
 Single Tier Application 
 
 Purpose - Recieve Customer Data and an Image Upload

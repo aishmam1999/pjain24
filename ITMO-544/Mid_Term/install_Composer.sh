@@ -19,3 +19,5 @@ exit $RESULT
 #after this
 #sudo apt-get install simplexml php7.2.xml 
 #run php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
+
+#https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md

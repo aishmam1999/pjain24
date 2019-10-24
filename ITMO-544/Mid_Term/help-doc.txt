@@ -53,3 +53,7 @@ ssh -i ./classkey.pam ubuntu@3.83.something.something
 #sudo apt-get install simplexml php7.2.xml 
 #run php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 #sudo apt-get install php-curl
+#clone git 
+#week 6 you have list_bucket.php
+#sudo cp ./list-buckets.php /var/www/html
+#tail var/log/apache2/error.log

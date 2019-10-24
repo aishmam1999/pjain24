@@ -10,4 +10,4 @@ sudo apt-get -y install php-gd mysql-server php-mysql php-mysql mysql-server
 #library for image processing 
 
 
-sudo apt-get install simplexml php7.2.xml
+sudo apt-get -y install simplexml php7.2.xml

@@ -21,7 +21,7 @@ vi info.php
 )
 */
 
-///////////////// 9/5/19 class///////////////
+///////////////// 9/25/19 class///////////////
 Single Tier Application 
 
 Purpose - Recieve Customer Data and an Image Upload

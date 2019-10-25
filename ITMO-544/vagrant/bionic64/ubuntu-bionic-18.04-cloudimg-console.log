@@ -586,3 +586,13 @@ Welcome to [1mUbuntu 18.04.3 LTS[0m!
 Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
 ubuntu-bionic login: [20359.469214] systemd[1]: systemd-udevd.service: Watchdog timeout (limit 3min)!
+[25145.286509] watchdog: BUG: soft lockup - CPU#1 stuck for 1674s! [apport:4478]
+[25145.401654] INFO: rcu_sched self-detected stall on CPU
+[25145.403063] 	0-...!: (1 GPs behind) idle=4b2/140000000000001/0 softirq=61257/61258 fqs=0 
+[25145.405397] 	
+[25145.405400] INFO: rcu_sched detected stalls on CPUs/tasks:
+[25145.407657] rcu_sched kthread starved for 448280 jiffies! g23697 c23696 f0x0 RCU_GP_WAIT_FQS(3) ->state=0x402 ->cpu=1
+[25145.407660] 	0-...!: (1 GPs behind) idle=4b2/140000000000001/0 softirq=61257/61258 fqs=0 
+[25145.407662] 	
+[25145.416494] rcu_sched kthread starved for 448280 jiffies! g23697 c23696 f0x0 RCU_GP_WAIT_FQS(3) ->state=0x200 ->cpu=1
+[25145.433318] systemd[1]: Failed to start Network Service.

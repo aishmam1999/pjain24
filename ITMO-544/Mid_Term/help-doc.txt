@@ -1,6 +1,8 @@
 //Arpita notes
 vanilla instance = aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d
 mine = ./install.sh ami-07d0cf3af28718ef8 2 t2.micro MyKeyPair sg-073198418b7ed762d
+aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d           
+
 
 Querry to check all 7 arguments are there 
 clock sync
@@ -56,4 +58,17 @@ ssh -i ./classkey.pam ubuntu@3.83.something.something
 #clone git 
 #week 6 you have list_bucket.php
 #sudo cp ./list-buckets.php /var/www/html
-#tail var/log/apache2/error.log
+#tail var/log/apache2/error.log 
+
+
+
+/////////////// 9/30/2019///////////////
+#ssh-keygen will generate id_rsa and id_rsa.pub file
+#mv id_rsa id_rsa_priv
+#mv id_rsa.pub id_rsa_pub.pub
+config file 
+
+sudo git clone git@github.com:illinoistech-itm/pjain24.git 
+
+/* create image command aws ec2 create-image --instance-id i-0d0a45634b7bd8d69 --name "pjain24_with_github_private_repo" */
+IT GENRATED MY PRIVATE REPO AMI :    ami-045b788f823101471

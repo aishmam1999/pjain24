@@ -585,4 +585,4 @@ Welcome to [1mUbuntu 18.04.3 LTS[0m!
 
 Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [20359.469214] systemd[1]: systemd-udevd.service: Watchdog timeout (limit 3min)!

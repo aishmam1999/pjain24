@@ -68,7 +68,7 @@ ssh -i ./classkey.pam ubuntu@3.83.something.something
 #mv id_rsa.pub id_rsa_pub.pub
 config file 
 
-sudo git clone git@github.com:illinoistech-itm/pjain24.git 
+git clone git@github.com:illinoistech-itm/pjain24.git 
 
 /* create image command aws ec2 create-image --instance-id i-01ad7e160d71adce9 --name "new_pjain24_with_github_private_repo"  */
 IT GENRATED MY PRIVATE REPO AMI :    ami-0eb7af7225499cc83

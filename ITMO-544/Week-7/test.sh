@@ -28,4 +28,4 @@ sudo systemctl start apache2
 cd ~/.ssh
 git clone https://github.com/illinoistech-itm/pjain24
 sudo cp pjain24 /
-sudo cp /pjain24/ITMO-544/Week-6/index.php /var/www/html
+sudo cp /pjain24/ITMO-544/Week-7/index.php /var/www/html

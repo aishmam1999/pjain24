@@ -1,13 +1,54 @@
+
+#!/bin/sh
+
+
+sudo apt-get -y update
+echo "/////////////////////////////////////////////////////////////////installing apache2////////////////////////////////////////////////////"
+sudo apt-get -y install apache2
 sudo apt-get -y update
 sudo apt-get -y install apache2
+echo "//////////////////////////////////////////////////////////////installing php///////////////////////////////////////////////////////////////"
+sudo apt-get -y install php
+echo "//////////////////////////////////////////////////////////////installing php-gd/////////////////////////////////////////////////////////////"
+sudo apt-get -y install php-gd
+echo "///////////////////////////////////////////////////////////////installing mysql-server////////////////////////////////////////////////////////"
+sudo apt-get -y install mysql-server
+echo "////////////////////////////////////////////////////////////////installing php-mysql/////////////////////////////////////////////////////////"
+sudo apt-get -y install php-mysql
+echo "//////////////////////////////////////////////////////////////////installing php.2.xml////////////////////////////////////////////////////////"
+sudo apt-get -y install php7.2.xml
+echo "/////////////////////////////////////////////////////////////////////installing php-xml///////////////////////////////////////////////////"
+sudo apt-get -y install php-xml
 
+echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
+EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+echo "composer if not started"
+if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
+then
+            >&2 echo 'ERROR: Invalid installer signature'
+                rm composer-setup.php
+                    exit 1
+            fi
+            echo "if finished"
+            php composer-setup.php --quiet
+            echo "setup quit worked"
+            RESULT=$?
+            echo "result stored"
+            rm composer-setup.php
+            echo "remover composer-setup"
+
+
+echo "///////////////////////////////////////////////compser-setup finished///////////////////////////////////////////////////////////////////////////////"
+php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
+
+
+echo "//////////////////////////////////////////////////// apache enable and start////////////////////////////////////////////////////////////////////////////////"
 sudo systemctl enable apache2
 sudo systemctl start apache2
-
-sudo apt-get -y install php 
-# make sure libapache2-mod-php7.2 is there
-sudo apt-get -y install php php-gd mysql-server php-mysql php-mysql mysql-server simplexml php7.2.xml
-#library for image processing 
-
-
-sudo apt-get -y install simplexml php7.2.xml
+cd ~/.ssh
+echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
+git clone git@github.com:illinoistech-itm/pjain24.git
+sudo cp pjain24/ITMO-544/Week-7/index.php /var/www/html
+ exit $RESULT                                                                                                                                            

@@ -39,5 +39,7 @@ cd ~/.ssh
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
 git clone git@github.com:illinoistech-itm/pjain24.git
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
-sudo cp pjain24/ITMO-544/Week-7/index.php /var/www/html
+sudo cp pjain24/ITMO-544/Mid_Term/index.php /var/www/html
+sudo cp pjain24/ITMO-544/Mid_Term/index.php /var/www/html
+
  exit $RESULT                                                                                                                                            

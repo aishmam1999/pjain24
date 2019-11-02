@@ -600,3 +600,5 @@ ubuntu-bionic login: [   25.623452] cloud-init[1236]: Cloud-init v. 19.2-24-ge78
 [76576.002390] systemd[1]: systemd-resolved.service: Watchdog timeout (limit 3min)!
 [120586.149136] systemd[1]: systemd-resolved.service: Watchdog timeout (limit 3min)!
 [130658.399726] systemd[1]: systemd-udevd.service: Watchdog timeout (limit 3min)!
+[143671.636001] systemd[1]: systemd-networkd.service: Watchdog timeout (limit 3min)!
+[143671.638251] systemd[1]: systemd-logind.service: Watchdog timeout (limit 3min)!

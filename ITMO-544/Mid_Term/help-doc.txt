@@ -183,3 +183,28 @@ php -r "unlink('composer-setup.php');"
 
 php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 tail var/log/apache2/error.log
+
+****************************************************** 10-28-19 ***************************************************************
+create database records
+
+createSchema.sql 
+use records;
+CREATE TABLE IF NOT EXISTS items
+(
+            id INT NOT NULL AUTO_INCREMENT,
+            email VARCHAR(200) NOT NULL,
+            phone VARCHAR(20) NOT NULL,
+            filename VARCHAR(255) NOT NULL,
+            s3rawurl VARCHAR(255) NOT NULL,
+            s3finishedurl VARCHAR(255) NOT NULL,
+            status INT NOT NULL,
+            issubscribed INT NOT NULL,
+            PRIMARY KEY(id)
+);
+
+vim ~/.my.cnf 
+    [client]
+    password  =p4ssw0rd
+
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+

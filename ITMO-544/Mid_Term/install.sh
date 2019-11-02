@@ -2,7 +2,7 @@
 
 #_=''
 
-if [ $# -ne 6 ]
+if [ $# -ne 7 ]
 then
 
 	echo "Provide only six positional parameters"
@@ -33,25 +33,31 @@ fi
 
 if [ -z $4 ]
 then
-    echo "Provide Security Group ID"
+    echo "Provide KeyPair"
 	exit 1
 fi
 
 
 if [ -z $5 ]
 then
-	echo "Provide valid IAM profile/Role"
+	echo "Provide valid Security Group ID"
 	exit 1
 fi
 
 
 if [ -z $6 ]
 then
-	echo "Provide valid subnet Id"
+	echo "Provide valid IAM profile/Role"
+	exit 1
+fi
+if [ -z $7 ]
+then
+	echo "Provide valid subnet id"
 	exit 1
 fi
 
 ############
+
 
 #Create EC2 Instance
 

@@ -1,7 +1,7 @@
 
-#!/bin/sh
+#!/bin/bash
 
-
+cd ~
 sudo apt-get -y update
 echo "/////////////////////////////////////////////////////////////////installing apache2////////////////////////////////////////////////////"
 sudo apt-get -y install apache2
@@ -35,11 +35,11 @@ php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 echo "//////////////////////////////////////////////////// apache enable and start////////////////////////////////////////////////////////////////////////////////"
 sudo systemctl enable apache2
 sudo systemctl start apache2
-cd ~/.ssh
+cd ~
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
 git clone git@github.com:illinoistech-itm/pjain24.git
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
-sudo cp pjain24/ITMO-544/Mid_Term/index.php /var/www/html
-sudo cp pjain24/ITMO-544/Mid_Term/index.php /var/www/html
+sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
+sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 
  exit $RESULT                                                                                                                                            

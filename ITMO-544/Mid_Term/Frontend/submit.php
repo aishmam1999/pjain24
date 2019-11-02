@@ -43,7 +43,7 @@ $bucket="pal-544-raw-bucket";
 $key = $uploadfile;
 
 $result = $s3->putObject([
-    // 'ACL' => 'public-read',
+    'ACL' => 'public-read',
     'Bucket' => $bucket,
     'Key' => $key,
     'SourceFile' => $uploadfile 
@@ -52,26 +52,26 @@ $result = $s3->putObject([
 $url = $result['ObjectURL'];
 echo $url;
 
-/*
+
 use Aws\Rds\RdsClient;
 $client = RdsClient::factory(array(
 'region'  => 'us-east-1'
 ));
 
 $result = $client->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'itmo544jrhdb',
+    'DBInstanceIdentifier' => 'pjain24-instance',
 ));
 
 $endpoint = "";
-*/
 
-//foreach ($result->getPath('DBInstances/*/Endpoint/Address') as $ep) {
- /*   // Do something with the message
+
+foreach ($result->getPath('DBInstances/*/Endpoint/Address') as $ep) {
+   // Do something with the message
     echo "============". $ep . "================";
     $endpoint = $ep;
 }   
 //echo "begin database";
-$link = mysqli_connect($endpoint,"controller","ilovebunnies","itmo544db") or die("Error " . mysqli_error($link));
+$link = mysqli_connect($endpoint,"master","p4ssw0rd","records") or die("Error " . mysqli_error($link));
 
 // check connection
 if (mysqli_connect_errno()) {

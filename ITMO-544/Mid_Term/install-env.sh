@@ -19,25 +19,13 @@ echo "//////////////////////////////////////////////////////////////////installi
 sudo apt-get -y install php7.2.xml
 echo "/////////////////////////////////////////////////////////////////////installing php-xml///////////////////////////////////////////////////"
 sudo apt-get -y install php-xml
+sudo apt-get -y install unzip zip
 
 echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
-EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
-echo "composer if not started"
-if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
-then
-            >&2 echo 'ERROR: Invalid installer signature'
-                rm composer-setup.php
-                    exit 1
-            fi
-            echo "if finished"
-            php composer-setup.php --quiet
-            echo "setup quit worked"
-            RESULT=$?
-            echo "result stored"
-            rm composer-setup.php
-            echo "remover composer-setup"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
 
 
 echo "///////////////////////////////////////////////compser-setup finished///////////////////////////////////////////////////////////////////////////////"

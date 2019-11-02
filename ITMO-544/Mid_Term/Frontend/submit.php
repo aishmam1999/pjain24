@@ -38,12 +38,12 @@ $s3 = new Aws\S3\S3Client([
 //    'Bucket' => $bucket
 //));
 //$client->waitUntilBucketExists(array('Bucket' => $bucket));
-$bucket="jrh-544-raw-bucket";
+$bucket="pal-544-raw-bucket";
 
 $key = $uploadfile;
 
 $result = $s3->putObject([
-    'ACL' => 'public-read',
+    // 'ACL' => 'public-read',
     'Bucket' => $bucket,
     'Key' => $key,
     'SourceFile' => $uploadfile 

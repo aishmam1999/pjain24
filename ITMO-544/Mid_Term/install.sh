@@ -99,5 +99,9 @@ aws rds create-db-instance --allocated-storage 20 --db-instance-class db.t2.micr
 
 echo "Created RDS instance"
 echo "----------------------------------------------------------"
+
+# wait for DB instace avaibility 
+aws rds db-instance-available --db-instance-identifier pjain24-instance
 #connect to sql
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd 
+

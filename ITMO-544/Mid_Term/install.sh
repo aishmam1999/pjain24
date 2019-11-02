@@ -118,7 +118,7 @@ echo "----------------------------------------------------------"
 echo "*************************************************** wait for DB - instance to be available ****************************************************"
 echo "----------------------------------------------------------"
 # wait for DB instace avaibility 
-aws rds db-instance-available --db-instance-identifier pjain24-instance
+aws rds wait db-instance-available --db-instance-identifier pjain24-instance
 #connect to sql
 mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd 
 

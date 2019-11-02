@@ -73,7 +73,7 @@ git clone git@github.com:illinoistech-itm/pjain24.git
 /* create image command aws ec2 create-image --instance-id i-01ad7e160d71adce9 --name "new_pjain24_with_github_private_repo"  */
 IT GENRATED MY PRIVATE REPO AMI :    ami-0eb7af7225499cc83
 
-aws ec2 run-instances --image-id ami-0eb7af7225499cc83 --count 1 --user-data file://create-env.sh --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762--iam-instance-profile Name=$6 --subnet-id $7
+aws ec2 run-instances --image-id ami-0eb7af7225499cc83 --count 1 --user-data file://install-env.sh --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762--iam-instance-profile Name=Inclass-2019 --subnet-id $7
 
 
 /* an 

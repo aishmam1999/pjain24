@@ -1,5 +1,6 @@
 <?
 require '/home/ubuntu/vendor/autoload.php';
+$email = $_POST['email'];
 $rdsclient = new Aws\Rds\RdsClient([
     'version' => '2014-10-31',
     'region' => 'us-east-2'
@@ -7,13 +8,13 @@ $rdsclient = new Aws\Rds\RdsClient([
 try {
     $result = $rdsclient->describeDBInstances([
         ]);
-    foreach ($result['DBInstances'] as $instance) {
-print('<p>DB Identifier: ' . $instance['DBInstanceIdentifier']);
-        print('<br />Endpoint: ' . $instance['Endpoint']["Address"]);
 
+    foreach ($result['DBInstances'] as $instance) {
+        print('<p>DB Identifier: ' . $instance['DBInstanceIdentifier']);
+        print('<br />Endpoint: ' . $instance['Endpoint']["Address"]);
         print('<br />Current Status: ' . $instance["DBInstanceStatus"]);
-print('</p>');
-}
+        print('</p>');
+                                                    }
         print(" Raw Result ");
 
 } catch (AwsException $e) {
@@ -29,12 +30,15 @@ $s3 = new S3Client([
         'version' => '2006-03-01'
 ]);
 
-$connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
-if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
+$connection = mysqli_connect($endpoint, "master", "p4ssw0rd");or die("Error " . mysqli_error($connection));
+if (mysqli_connect_errno()){ 
+echo "Failed to connect to MySQL: " . mysqli_connect_error();}
 
   $database = mysqli_select_db($connection, "records");
-  $result = array(mysqli_query($connection, "SELECT s3rawurl FROM items where emailID = $_POST["useremail"] ));
-  $result2 = array(mysqli_query($connection, "SELECT s3finishedurl FROM items where emailID = $_POST["useremail"] ));
+  $result1 = mysqli_query($connection, "SELECT s3rawurl FROM items where emailID = $_POST["useremail"] ));
+  $result2 = mysqli_query($connection, "SELECT s3finishedurl FROM items where emailID = $_POST["useremail"] ));
+echo "<img src= $result1>";
+echo "<img src= $result2>";
 
 
 

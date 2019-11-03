@@ -592,4 +592,9 @@ ist of required sta…vice nodes for the current kernel.
 
 Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [ 7675.056331] systemd[1]: systemd-logind.service: Watchdog timeout (limit 3min)!
+[10928.655334] systemd[1]: systemd-networkd.service: Watchdog timeout (limit 3min)!
+[10928.657655] systemd[1]: systemd-logind.service: Watchdog timeout (limit 3min)!
+[13736.773162] systemd[1]: systemd-udevd.service: Watchdog timeout (limit 3min)!
+[13736.775110] systemd[1]: systemd-resolved.service: Watchdog timeout (limit 3min)!
+[13736.777258] systemd[1]: systemd-logind.service: Watchdog timeout (limit 3min)!

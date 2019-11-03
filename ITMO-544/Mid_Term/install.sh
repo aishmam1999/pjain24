@@ -81,13 +81,13 @@ echo "********************************************Creating load balancer********
 echo "----------------------------------------------------------"
 
 #create load balancer
-aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $7
+aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $7 
 #aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets subnet-8f3249b1
 
 echo "**********************************************Performing health check***************************************************************"
 echo "----------------------------------------------------------"
 #health check
-aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
+aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
 
 echo " ****************************************creating cookie policy**************************************************************************"
 echo "----------------------------------------------------------"
@@ -118,5 +118,5 @@ echo "----------------------------------------------------------"
 # wait for DB instace avaibility 
 aws rds wait db-instance-available --db-instance-identifier pjain24-instance
 #connect to sql
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd 
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
 

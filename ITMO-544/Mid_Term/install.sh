@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#_=''
-
 if [ $# -ne 7 ]
 then
 

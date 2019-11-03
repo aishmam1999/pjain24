@@ -1,7 +1,6 @@
 
 #!/bin/bash
 
-cd ~
 sudo apt-get -y update
 echo "/////////////////////////////////////////////////////////////////installing apache2////////////////////////////////////////////////////"
 sudo apt-get -y install apache2
@@ -20,12 +19,11 @@ sudo apt-get -y install php7.2.xml
 echo "/////////////////////////////////////////////////////////////////////installing php-xml///////////////////////////////////////////////////"
 sudo apt-get -y install php-xml
 sudo apt-get -y install unzip zip
-
+cd ~ 
 echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
-php -r "unlink('composer-setup.php');"
 
 
 echo "///////////////////////////////////////////////compser-setup finished///////////////////////////////////////////////////////////////////////////////"
@@ -41,5 +39,7 @@ git clone git@github.com:illinoistech-itm/pjain24.git
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
+sudo cp pjain24/ITMO-544/Mid_Term/Frontend/galary.php /var/www/html/
+
 
  exit $RESULT                                                                                                                                            

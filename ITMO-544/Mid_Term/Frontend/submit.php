@@ -42,7 +42,7 @@ $uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
 
 echo $uploadfile;
 echo '<pre>';
-if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+if (move_uploaded_file($_FILES['userfile']['orignanl_image'], $uploadfile)) {
             echo "File is valid, and was successfully uploaded.\n";
 } else {
             echo "Possible file upload attack!\n";
@@ -105,19 +105,36 @@ $connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
 
                                               printf("%d Row inserted.\n", $stmt->affected_rows);
                                                 }
+
+
+   //////////////////////////////////////////////////////////////////////////////////////////////////
+   
+   try {
+    // Get the object.
+    $result1 = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $key
+    ]);
+
+    // Display the object in the browser.
+    header("Content-Type: {$result1['ContentType']}");
+    echo $result1['Body'] > /var/www/html/grayimage.jpeg;
+} catch (S3Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+}
 //https://www.php.net/manual/en/function.imagefilter.php
-            $im = imagecreatefrompng($url);
-            if($im && imagefilter($im, IMG_FILTER_GRAYSCALE))
+            $im = imagecreatefrompng(/var/www/html/grayimage.jpeg);
+            if($im && imagefilter($im, /var/www/html/grayimage.jpeg))
             {
             echo 'Image converted to grayscale.';
 
-            imagepng($im, $url);
+            imagepng($im, /var/www/html/grayimage.jpeg);
             }
             else
             {
              echo 'Conversion to grayscale failed.';
             }
-            
+
 
 
 
@@ -126,3 +143,29 @@ $connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
 
 
 ?>
+
+
+require 'vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
+
+$bucket = '*** Your Bucket Name ***';
+$keyname = '*** Your Object Key ***';
+
+$s3 = new S3Client([
+    'version' => 'latest',
+    'region'  => 'us-east-1'
+]);
+
+try {
+    $result = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $keyname
+    ]);
+
+    header("Content-Type: {$result['ContentType']}");
+    echo $result['Body'];
+} catch (S3Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+}

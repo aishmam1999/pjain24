@@ -105,7 +105,24 @@ $connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
 
                                               printf("%d Row inserted.\n", $stmt->affected_rows);
                                                 }
+//https://www.php.net/manual/en/function.imagefilter.php
+            $im = imagecreatefrompng($url);
+            if($im && imagefilter($im, IMG_FILTER_GRAYSCALE))
+            {
+            echo 'Image converted to grayscale.';
+
+            imagepng($im, $url);
+            }
+            else
+            {
+             echo 'Conversion to grayscale failed.';
+            }
+            
+
+
 
             $stmt -> close();
             $connection -> close();
+
+
 ?>

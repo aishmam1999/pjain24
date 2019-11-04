@@ -12,7 +12,7 @@ use Aws\Exception\AwsException;
 
 $rdsclient = new Aws\Rds\RdsClient([
             'version' => '2014-10-31',
-            'region' => 'us-east-2'
+            'region' => 'us-east-1'
     ]);
 try {
             $result = $rdsclient->describeDBInstances([
@@ -32,8 +32,8 @@ try {
                  echo "\n";
 }
 
-//$endpoint = $instance['Endpoint']["Address"];
-$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";
+$endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
+//$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";i
 echo $endpoint;
 
 echo $_POST['useremail'];
@@ -119,7 +119,7 @@ $result = $s3->putObject([
                     'Key' => $newkey,
                     'SourceFile' => $downloadfilepath,
                     'ACL' => 'public-read'
-                ])
+                ]);
 echo $result;
 $url2 = $result['ObjectURL'];
 echo $url2;
@@ -163,6 +163,4 @@ $phone = $_POST['phone'];
 
         $stmt -> close();
       $connection -> close();
-
-
 ?>

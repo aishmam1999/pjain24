@@ -5,10 +5,10 @@ use Aws\Rds\RdsClient;
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 $email = $_POST['useremail'];
-echo "$email";
+//echo "$email";
 $rdsclient = new Aws\Rds\RdsClient([
     'version' => '2014-10-31',
-    'region' => 'us-east-2'
+    'region' => 'us-east-1'
 ]);
 try {
     $result = $rdsclient->describeDBInstances([
@@ -27,9 +27,11 @@ try {
      echo $e->getMessage();
          echo "\n";
 }
-
-$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";
-echo $endpoint;
+$endpoint = $instance['Endpoint']["Address"];
+//echo $endpoint;
+//echo 'it should come pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com';
+//$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";
+//echo $endpoint;
 $s3 = new S3Client([
     'region' => 'us-east-1',
         'version' => '2006-03-01'
@@ -37,7 +39,7 @@ $s3 = new S3Client([
 
 $useremail = 'palashjain2801@gmail.com';
   $sql = "SELECT *  FROM items";
-  echo $sql;
+  //echo $sql;
 
   $connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
 

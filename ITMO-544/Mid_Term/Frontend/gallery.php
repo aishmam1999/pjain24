@@ -1,6 +1,11 @@
-<?
+<?php
+session_start();
 require '/home/ubuntu/vendor/autoload.php';
-$email = $_POST['email'];
+use Aws\Rds\RdsClient;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+$email = $_POST['useremail'];
+echo "$email";
 $rdsclient = new Aws\Rds\RdsClient([
     'version' => '2014-10-31',
     'region' => 'us-east-2'
@@ -30,18 +35,23 @@ $s3 = new S3Client([
         'version' => '2006-03-01'
 ]);
 
-$connection = mysqli_connect($endpoint, "master", "p4ssw0rd");or die("Error " . mysqli_error($connection));
-if (mysqli_connect_errno()){ 
-echo "Failed to connect to MySQL: " . mysqli_connect_error();}
+$useremail = 'palashjain2801@gmail.com';
+  $sql = "SELECT *  FROM items";
+  echo $sql;
 
-  $database = mysqli_select_db($connection, "records");
-  $result1 = mysqli_query($connection, "SELECT s3rawurl FROM items where emailID = $_POST["useremail"] ));
-  $result2 = mysqli_query($connection, "SELECT s3finishedurl FROM items where emailID = $_POST["useremail"] ));
-echo "<img src= $result1>";
-echo "<img src= $result2>";
+  $connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
 
+    if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
 
+    $database = mysqli_select_db($connection, "records");
+    $result = mysqli_query($connection, "SELECT * FROM items where email = '$email'");
 
+    while($query_data = mysqli_fetch_row($result)) {
+                          echo "<tr>
+                                    <td><img src=$query_data[4] ></td>
+                                    <td><img src=$query_data[5] ></td>
+                                </tr>";
+                            }
 
 
 ?>

@@ -11,12 +11,17 @@
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
     <!-- Name of input element determines name in $_FILES array -->
     Send this file: <input name="userfile" type="file" /><br />
+Enter Name of user: <input type="name" name="username"><br />
 Enter Email of user: <input type="email" name="useremail"><br />
 Enter Phone of user (1-XXX-XXX-XXXX): <input type="phone" name="phone">
 
 
 <input type="submit" value="Submit" />
 </form>
+<form enctype="multipart/form-data" action="gallery.php" method="POST">
+
+Enter Email of user: <input type="email" name="useremail"><br />
+<input type="submit" value="gallery" />
 <hr/>
 
 

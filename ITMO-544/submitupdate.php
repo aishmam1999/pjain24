@@ -57,6 +57,8 @@ $s3 = new S3Client([
                     'version' => '2006-03-01'
             ]);
 
+
+
 $bucket="pal-544-raw-bucket";
 $key = $_FILES['userfile']['name'];
 echo ".....................................................";
@@ -71,55 +73,51 @@ echo $result;
 $url = $result['ObjectURL'];
 echo $url;
 
-echo "------------------------------------WORKS TILL HERE-------------------------------";
+echo "------------------------------------WORKS TILL HERE-------------------------------"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$downloaddir = '/tmp/';
-$downloadfile = "$downloaddir$key";
+$bucket="pal-544-raw-bucket";
 
-echo "Attempting to download $key to $downloadfile";
-try{
-        $result = $s3->getObject(array(
+$key =  $_FILES['userfile']['name'];
+$downloaddir = '/home/ubuntu/modimg/';
+$downloadfile = "$downloaddir/$key";
+
+$result = $s3->getObject(array(
               'Bucket' => $bucket,
-              'Key' => $key,
-              'SaveAs' => $downloadfile));
-}       catch (AwsException $e) {
-         // output error message if fails
-             echo $e->getMessage();
-                 echo "\n";
-}
+                      'Key' => $key,
+                              'SaveAs' => $downloadfile));
 echo $result;
-echo "------------------------------------DOWNLOADED RAW from S3-------------------------------";
+echo "------------------------------------DOWNLOADED RAW from S3-------------------------------"
 
-$newkey = "processed".$key;
-$downloadfilepath = $downloaddir.$newkey;
 ////////////////////////////////////////////////////////////////////////////////////
     $im = imagecreatefrompng($downloadfile);
-        echo $im;
+
     if($im && imagefilter($im, IMG_FILTER_GRAYSCALE))
     {
-                imagepng($im, $downloadfilepath);
-                echo "Image converted to grayscale. Original Image: $im PRocessed Key: $newkey";
+                echo 'Image converted to grayscale.';
+
+                    imagepng($im, "processed".$downloadfile);
     }
     else
     {
                 echo 'Conversion to grayscale failed.';
     }
-    echo "------------------------------------Converted to GrayScale-------------------------------";
+    echo "------------------------------------Converted to GrayScale-------------------------------"
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-$bucket2="pal-544-finalize-bucket";
-echo "uploading $newkey from $downloadfile to $bucket2";
+$bucket="pal-544-finalize-bucket";
+$newkey = "processed".$downloadfile;
+
 echo $newkey;
 $result = $s3->putObject([
-                'Bucket' => $bucket2,
+                'Bucket' => $bucket,
                     'Key' => $newkey,
-                    'SourceFile' => $downloadfilepath,
+                    'SourceFile' => $downloadfile,
                     'ACL' => 'public-read'
-                ])
+                ]);
 echo $result;
 $url2 = $result['ObjectURL'];
 echo $url2;
@@ -165,4 +163,5 @@ $phone = $_POST['phone'];
       $connection -> close();
 
 
+    
 ?>

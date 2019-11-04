@@ -64,7 +64,7 @@ sudo ntpdate 0.amazon.pool.ntp.org
 echo "***********************************Running the EC2 instances**********************************************"
 echo "----------------------------------------------------------"
 #run ec2 instances
-aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-env.sh --security-group-ids $5 --iam-instance-profile Name=$6 --subnet-id $7
+aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-app-env.sh --security-group-ids $5 --iam-instance-profile Name=$6 --subnet-id $7
 #wait till instances are in running state
 echo "*********************************waiting for instance status okay*******************************************************"
 echo "----------------------------------------------------------"

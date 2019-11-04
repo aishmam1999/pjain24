@@ -19,6 +19,10 @@ sudo apt-get -y install php7.2.xml
 echo "/////////////////////////////////////////////////////////////////////installing php-xml///////////////////////////////////////////////////"
 sudo apt-get -y install php-xml
 sudo apt-get -y install unzip zip
+echo "///////////////////////////////////////////////////////////////////// aws-cli///////////////////////////////////////////////////"
+
+sudo apt-get -y install awscli
+
 cd ~ 
 echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -40,8 +44,11 @@ echo "//////////////////////////////////////////////////////////////////copying 
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/galary.php /var/www/html/
-sudo mv pjain24/ITMO-544/Mid_Term/.my.cnf ~/.my.cnf
+sudo mv pjain24/ITMO-544/Mid_Term/.my.cnf  ~/.my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
+
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "record"
 
 
 

@@ -172,7 +172,7 @@ $5 will be Security Group ID : sg-073198418b7ed762d
 $6 will be IAM profile/Role : Inclass-2019
 $7 will be subnet Id: 
 aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-env.sh --security-group-ids $5 --iam-instance-profile Name=$6 --subnet-id $7
-./install.sh ami-0eb7af7225499cc83 1 t2.micro MyKeyPair sg-073198418b7ed762d Inclass-2019 subnet-8f3249b1
+./create-env.sh ami-0eb7af7225499cc83 1 t2.micro MyKeyPair sg-073198418b7ed762d Inclass-2019 subnet-8f3249b1
 *****************************************10-23-19*********************************************************************
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"

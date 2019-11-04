@@ -3,7 +3,7 @@
 
 ## My Project has Two Part 1> FrontEnd 2> Backend
 
-# NOTE : ONLY PNG Format is Supported 
+## NOTE : ONLY PNG Format is Supported 
 
 ## Frontend 
 #### Frontend has three file Index.php gallery.php and Submit.php

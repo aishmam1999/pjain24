@@ -105,5 +105,5 @@ echo "*************************************************** wait for DB - instance
 # wait for DB instace avaibility 
 aws rds wait db-instance-available --db-instance-identifier pjain24-instance
 #connect to sql
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < 	.sql 
 

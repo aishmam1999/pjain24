@@ -23,12 +23,14 @@ echo "///////////////////////////////////////////////////////////////////// aws-
 sudo apt-get -y install awscli
 
 cd ~ 
+pwd
 echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
-sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php composer-setup.php
 
-
+cd ~
+pwd
 echo "///////////////////////////////////////////////compser-setup finished///////////////////////////////////////////////////////////////////////////////"
 sudo php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 
@@ -36,14 +38,16 @@ sudo php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 echo "//////////////////////////////////////////////////// apache enable and start////////////////////////////////////////////////////////////////////////////////"
 sudo systemctl enable apache2
 sudo systemctl start apache2
-cd ~
+cd /
 echo pwd
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
-sudo git clone git@github.com:illinoistech-itm/pjain24.git
+git clone git@github.com:illinoistech-itm/pjain24.git
+git clone https://palashjain2801:28011993p.j@github.com/illinoistech-itm/pjain24
+
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
-sudo cp pjain24/ITMO-544/Mid_Term/Frontend/galary.php /var/www/html/
+sudo cp pjain24/ITMO-544/Mid_Term/Frontend/gallery.php /var/www/html/
 sudo mv pjain24/ITMO-544/Mid_Term/.my.cnf  ~/.my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
 

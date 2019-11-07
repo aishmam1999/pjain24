@@ -586,3 +586,26 @@ Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
 ubuntu-bionic login: [   23.806323] cloud-init[1283]: Cloud-init v. 19.2-36-g059d049c-0ubuntu2~18.04.1 running 'modules:final' at Tue, 05 Nov 2019 19:39:34 +0000. Up 23.29 seconds.
 [   23.806593] cloud-init[1283]: Cloud-init v. 19.2-36-g059d049c-0ubuntu2~18.04.1 finished at Tue, 05 Nov 2019 19:39:34 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 23.77 seconds
+[94481.613387] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[94481.613387]   Tx Queue             <0>
+[94481.613387]   TDH                  <3e>
+[94481.613387]   TDT                  <40>
+[94481.613387]   next_to_use          <40>
+[94481.613387]   next_to_clean        <3e>
+[94481.613387] buffer_info[next_to_clean]
+[94481.613387]   time_stamp           <10167542b>
+[94481.613387]   next_to_watch        <3f>
+[94481.613387]   jiffies              <1016755a3>
+[94481.613387]   next_to_watch.status <0>
+[94484.616696] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[94484.616696]   Tx Queue             <0>
+[94484.616696]   TDH                  <3e>
+[94484.616696]   TDT                  <40>
+[94484.616696]   next_to_use          <40>
+[94484.616696]   next_to_clean        <3e>
+[94484.616696] buffer_info[next_to_clean]
+[94484.616696]   time_stamp           <10167542b>
+[94484.616696]   next_to_watch        <3f>
+[94484.616696]   jiffies              <101675892>
+[94484.616696]   next_to_watch.status <0>
+[94486.083311] e1000 0000:00:03.0 enp0s3: Reset adapter

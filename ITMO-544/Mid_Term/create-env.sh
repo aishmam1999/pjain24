@@ -91,7 +91,7 @@ aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listen
 
 echo "**********************************************Performing health check***************************************************************"
 #health check
-aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
+aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
 
 echo " ****************************************creating cookie policy**************************************************************************"
 #create cookie policy
@@ -108,7 +108,7 @@ aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer 
 echo "********************************************** Finished registering target instances ***************************************************"
 echo "*********************************************** Creating DB - instance ****************************************************************"
 #create db instance
-aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
+#aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
 
 echo "**************************************************** Created RDS instance **********************************************************************"
 echo "*************************************************** wait for DB - instance to be available ****************************************************"

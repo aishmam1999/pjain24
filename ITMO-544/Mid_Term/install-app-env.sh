@@ -38,8 +38,8 @@ sudo php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 echo "//////////////////////////////////////////////////// apache enable and start////////////////////////////////////////////////////////////////////////////////"
 sudo systemctl enable apache2
 sudo systemctl start apache2
-cd /
-echo pwd
+cd ~
+pwd
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
 git clone git@github.com:illinoistech-itm/pjain24.git
 git clone https://palashjain2801:28011993p.j@github.com/illinoistech-itm/pjain24
@@ -48,11 +48,13 @@ echo "//////////////////////////////////////////////////////////////////copying 
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/gallery.php /var/www/html/
-sudo mv pjain24/ITMO-544/Mid_Term/.my.cnf  ~/.my.cnf
+sudo mv pjain24/ITMO-544/Mid_Term/my.cnf  ~/.my.cnf
+sudo cp ~/.my.cnf ~/.ssh/                                                                                                                                                                                                                                                              
+
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "record"
 
 mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "record"
 
 
 

@@ -48,7 +48,7 @@ echo "//////////////////////////////////////////////////////////////////copying 
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/gallery.php /var/www/html/
-sudo mv pjain24/ITMO-544/Mid_Term/my.cnf  ~/.my.cnf
+sudo mv pjain24/ITMO-544/Mid_Term/config  ~/.my.cnf
 sudo cp ~/.my.cnf ~/.ssh/                                                                                                                                                                                                                                                              
 
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~

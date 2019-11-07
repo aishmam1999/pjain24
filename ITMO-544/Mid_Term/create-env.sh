@@ -56,7 +56,18 @@ fi
 ############
 
 
+sudo apt-get install ntpdate
+sudo ntpdate 0.amazon.pool.ntp.org 
 #Create EC2 Instance
+echo "*********************************************** Creating DB - instance ****************************************************************"
+#create db instance
+aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
+
+echo "**************************************************** Created RDS instance **********************************************************************"
+echo "*************************************************** wait for DB - instance to be available ****************************************************"
+# wait for DB instace avaibility 
+aws rds wait db-instance-available --db-instance-identifier pjain24-instance
+
 
 sudo apt-get install ntpdate
 sudo ntpdate 0.amazon.pool.ntp.org                                                                                                        
@@ -97,7 +108,7 @@ aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer 
 echo "********************************************** Finished registering target instances ***************************************************"
 echo "*********************************************** Creating DB - instance ****************************************************************"
 #create db instance
-aws rds create-db-instance --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
+aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
 
 echo "**************************************************** Created RDS instance **********************************************************************"
 echo "*************************************************** wait for DB - instance to be available ****************************************************"

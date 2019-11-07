@@ -3,7 +3,7 @@
 
 # Make Sure
 ## NOTE : ONLY PNG Format is Supported 
-## NOTE : Make sure createschema.sql file is coplied and added ran (Sometimes it doesn't get copy)
+## NOTE : Make sure createschema.sql file is copied and added ran (Sometimes it doesn't get copy)
 ## NOTE : If submit page or anything doesn't appear , please restart apache2
 
 ## My Project has Two Part 1> FrontEnd 2> Backend

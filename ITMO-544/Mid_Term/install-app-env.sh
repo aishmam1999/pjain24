@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~
+cd /home/ubuntu
 sudo apt-get -y update
 echo "/////////////////////////////////////////////////////////////////installing apache2////////////////////////////////////////////////////"
 sudo apt-get -y install apache2
@@ -22,14 +22,14 @@ echo "///////////////////////////////////////////////////////////////////// aws-
 
 sudo apt-get -y install awscli
 
-cd ~ 
+cd /home/ubuntu
 pwd
 echo "//////////////////////////////////////////////////////////////////////installing composer-setup////////////////////////////////////////////"
  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
  php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php composer-setup.php
 
-cd ~
+cd /home/ubuntu
 pwd
 echo "///////////////////////////////////////////////compser-setup finished///////////////////////////////////////////////////////////////////////////////"
 sudo php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
@@ -38,7 +38,7 @@ sudo php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
 echo "//////////////////////////////////////////////////// apache enable and start////////////////////////////////////////////////////////////////////////////////"
 sudo systemctl enable apache2
 sudo systemctl start apache2
-cd ~
+cd /home/ubuntu
 pwd
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
 #git clone git@github.com:illinoistech-itm/pjain24.git
@@ -52,7 +52,7 @@ sudo mv pjain24/ITMO-544/Mid_Term/my.cnf  ~/.my.cnf
 sudo cp ~/.my.cnf ~/.ssh/                                                                                                                                                                                                                                                              
 
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "record"
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd "record"
 
 mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
 

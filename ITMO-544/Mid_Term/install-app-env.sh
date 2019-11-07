@@ -58,9 +58,11 @@ sudo cp pjain24/ITMO-544/Mid_Term/config  /etc/my.cnf
 #sudo cp ~/my.cnf ~/.ssh/                                                                                                                                                                                                                                                              
 
 sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+
 mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "record"
 
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+#mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
 
 
 

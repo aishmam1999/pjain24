@@ -1,0 +1,210 @@
+//Arpita notes
+vanilla instance = aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d
+mine = ./install.sh ami-07d0cf3af28718ef8 2 t2.micro MyKeyPair sg-073198418b7ed762d
+aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d           
+
+
+Querry to check all 7 arguments are there 
+clock sync
+instance run
+wait command
+create load balancer 
+configure health check for load balancer
+coockie stickyness policy
+Registring EC2 instance with loadbalancer
+creatind RDB database
+
+
+/*
+sudo /var/www/html/
+vi info.php
+(
+    <?php phpinfo();  ?>
+)
+*/
+
+///////////////// 9/25/19 class///////////////
+Single Tier Application 
+
+Purpose - Recieve Customer Data and an Image Upload
+Store Data 
+    name 
+    phone
+    Email
+
+Store Image
+    s3 - create buckets raw-pal finsihed-pal
+
+Use an image processing Library (thumbnail 100*100)
+Notify customer that processing is done (SMS - Email)  (Not doing that now)
+Update Customer Record (Not doing that either now)
+Gallary page
+
+Index.php
+process.php
+gallery.php
+
+PHP is quick and SDK have more information (According to Professor)
+
+
+aws ec2 describe security-groups
+ssh -i ./classkey.pam ubuntu@3.83.something.something
+
+#install composer 
+#after that
+#sudo apt-get install simplexml php7.2.xml 
+#run php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
+#sudo apt-get install php-curl
+#clone git 
+#week 6 you have list_bucket.php
+#sudo cp ./list-buckets.php /var/www/html
+#tail var/log/apache2/error.log 
+
+
+
+/////////////// 9/30/2019///////////////
+#ssh-keygen will generate id_rsa and id_rsa.pub file
+#mv id_rsa id_rsa_priv
+#mv id_rsa.pub id_rsa_pub.pub
+config file 
+
+git clone git@github.com:illinoistech-itm/pjain24.git 
+
+/* create image command aws ec2 create-image --instance-id i-01ad7e160d71adce9 --name "new_pjain24_with_github_private_repo"  */
+IT GENRATED MY PRIVATE REPO AMI :    ami-0eb7af7225499cc83
+
+aws ec2 run-instances --image-id ami-0eb7af7225499cc83 --count 1 --user-data file://install-env.sh --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762 --iam-instance-profile Name=Inclass-2019 --subnet-id $7
+
+
+/* an 
+#!/bin/bash
+
+#clock sync
+sudo apt-get install ntpdate
+sudo ntpdate 0.amazon.pool.ntp.org                                                                                                        
+echo "Running the EC2 instances"
+echo "----------------------------------------------------------"
+#run ec2 instances
+aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-env.sh --security-group-ids $5 --iam-profile-role Name=$6 --subnet-id $7
+
+#wait till instances are in running state
+aws ec2 wait instance-status-ok
+
+echo ""
+echo "EC2 Instances Deployed"
+echo "----------------------------------------------------------"
+
+#get the instance ids of the running instances
+MYID=`aws ec2 describe-instances --query 'Reservations[].Instances[].[State.Name, InstanceId]' --output text | grep running | awk '{print $2}'`                                                                                                                                
+echo "Creating load balancer"
+echo "----------------------------------------------------------"
+
+#create load balancer
+aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $7
+#aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets subnet-8f3249b1
+
+echo "Performing health check"
+echo "----------------------------------------------------------"
+#health check
+aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
+
+#create cookie policy
+aws elb create-lb-cookie-stickiness-policy --load-balancer-name pjain24-load-balancer --policy-name my-duration-cookie-policy
+#register ec2 instances with load balancer
+aws elb register-instances-with-load-balancer --load-balancer-name pjain24-load-balancer --instances $MYID
+
+
+#wait for instances to be registered
+aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer --instances $MYID
+
+echo "Finished registering target instances"
+echo "----------------------------------------------------------"
+
+#create db instance
+aws rds create-db-instance --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain-instance --engine mysql --master-username master --master-user-password p4ssw0rd
+
+echo "Created RDS instance"
+echo "----------------------------------------------------------"
+*/
+
+connect to sql
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master -pp4ssw0rd
+pjain-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com
+
+************************10-02-19***************************************************
+send image id to professor 
+create RDS database 
+MASTER USERNAME : controller 
+PASSWORD : ncMlCZlPjInby2S51P45
+DB instance identifier : mp1
+
+Video time :57.30
+
+aws rds create-db-instance --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier ksh-2019-instance --engine mysql --master-username master --master-user-password anweshak --availability-zone us-east-1
+sudo apt-get install mysql-client
+mysql --host 
+
+*********************************10-14-19****************************************************
+aws ec2 describe-instances | awk {'print $8} | grep i-*
+aws ec2 describe-instances --output=text --filter  "Name=instance-sate-name, Value=running" --query "Reservations[*].Instances[*].InstanceId
+aws ec2 describe-subnets 
+aws elbv2 create-load-balancer --name my-load-balancer --subnets subnet-8f3249b1 subnet-679fae3b
+
+
+********************************10-16-19**************************************************
+cretae loadbalancer
+aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $7
+health check
+aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
+create cookie policy
+aws elb create-lb-cookie-stickiness-policy --load-balancer-name pjain24-load-balancer --policy-name my-duration-cookie-policy
+#register ec2 instances with load balancer
+aws elb register-instances-with-load-balancer --load-balancer-name pjain24-load-balancer --instances $MYID
+wait for it to register 
+aws elb wait any-instance-in-service --load-balancer-name ak-load-balancer --instances $MYID
+index.php ->  1.07.00 mm 
+********************************10-21-19*************************************************************
+$1 will be Image ID: ami-0eb7af7225499cc83
+$2 will be count: 1
+$3 will be Instance Type: t2.micro
+$4 will be KeyPair Name : MyKeyPair
+$5 will be Security Group ID : sg-073198418b7ed762d
+$6 will be IAM profile/Role : Inclass-2019
+$7 will be subnet Id: 
+aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-env.sh --security-group-ids $5 --iam-instance-profile Name=$6 --subnet-id $7
+./create-env.sh ami-0eb7af7225499cc83 1 t2.micro MyKeyPair sg-073198418b7ed762d Inclass-2019 subnet-8f3249b1
+*****************************************10-23-19*********************************************************************
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+
+php -d memory_limit=-1 composer.phar require aws/aws-sdk-php
+tail var/log/apache2/error.log
+
+****************************************************** 10-28-19 ***************************************************************
+create database records
+
+createSchema.sql 
+use records;
+CREATE TABLE IF NOT EXISTS items
+(
+            id INT NOT NULL AUTO_INCREMENT,
+            email VARCHAR(200) NOT NULL,
+            phone VARCHAR(20) NOT NULL,
+            filename VARCHAR(255) NOT NULL,
+            s3rawurl VARCHAR(255) NOT NULL,
+            s3finishedurl VARCHAR(255) NOT NULL,
+            status INT NOT NULL,
+            issubscribed INT NOT NULL,
+            PRIMARY KEY(id)
+);
+
+vim ~/.my.cnf 
+    [client]
+    password  =p4ssw0rd
+
+mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
+

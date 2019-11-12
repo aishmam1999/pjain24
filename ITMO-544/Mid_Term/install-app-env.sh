@@ -41,8 +41,8 @@ sudo systemctl start apache2
 cd /home/ubuntu
 pwd
 echo "/////////////////////////////////////////////////////////////////github repo cloneing ///////////////////////////////////////////////////////////////////////"
-#git clone git@github.com:illinoistech-itm/pjain24.git
-sudo git clone https://palashjain2801:28011993p.j@github.com/illinoistech-itm/pjain24
+git clone git@github.com:illinoistech-itm/pjain24.git
+#sudo git clone https://palashjain2801:28011993p.j@github.com/illinoistech-itm/pjain24
 
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
 sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/

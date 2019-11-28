@@ -59,13 +59,6 @@ fi
 sudo apt-get install ntpdate
 sudo ntpdate 0.amazon.pool.ntp.org 
 #Create EC2 Instance
-echo "*********************************************** Creating DB - instance ****************************************************************"
-#create db instance
-aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
-
-echo "*************************************************** wait for DB - instance to be available ****************************************************"
-# wait for DB instace avaibility 
-aws rds wait db-instance-available --db-instance-identifier pjain24-instance
 
 
 sudo apt-get install ntpdate
@@ -74,8 +67,7 @@ echo "***********************************Running the EC2 instances**************
 #run ec2 instances
 aws ec2 run-instances --image-id $1 --count $2 --instance-type $3 --key-name $4 --user-data file://install-app-env-front-end.sh --security-group-ids $5 --iam-instance-profile Name=$6 --subnet-id $7
 #wait till instances are in running state
-echo "*********************************waiting for instance status okay*******************************************************"
-
+ 
 aws ec2 wait instance-status-ok
 
 echo "***************************************EC2 Instances Deployed**************************************************************"

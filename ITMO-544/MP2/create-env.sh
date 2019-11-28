@@ -80,10 +80,6 @@ echo "********************************************Creating load balancer********
 aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $7 
 #aws elb create-load-balancer --load-balancer-name pjain24-load-balancer --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets subnet-8f3249b1
 
-echo "**********************************************Performing health check***************************************************************"
-#health check
-aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
-
 echo " ****************************************creating cookie policy**************************************************************************"
 #create cookie policy
 aws elb create-lb-cookie-stickiness-policy --load-balancer-name pjain24-load-balancer --policy-name my-duration-cookie-policy
@@ -110,6 +106,10 @@ aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp
 echo "Creating auto scaling group"
 aws autoscaling create-auto-scaling-group --auto-scaling-group-name pjain-mp2-auto-scaling --launch-configuration-name pjain-mp2-launch-config --load-balancer-names pjain24-load-balancer --health-check-type ELB --health-check-grace-period 120 --min-size 2 --max-size 6 --desired-capacity 3 --default-cooldown 300 --availability-zones us-east-1a
 echo "autoscaling group created "
+
+echo "**********************************************Performing health check***************************************************************"
+#health check
+aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
 
 
 #./create-env.sh $1= ami-0eb7af7225499cc83 $2=1 $3=t2.micro $4=MyKeyPair $5=sg-073198418b7ed762d $6=Inclass-2019 $7= subnet-8f3249b1

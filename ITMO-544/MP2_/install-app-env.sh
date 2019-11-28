@@ -17,7 +17,10 @@ sudo apt-get -y install php7.2.xml
 echo "/////////////////////////////////////////////////////////////////////installing php-xml///////////////////////////////////////////////////"
 sudo apt-get -y install php-xml
 sudo apt-get -y install unzip zip
-
+echo "/////////////////////////////////install python file.//////////////////////////////////////////////////////////////"
+sudo apt-get install -y python3-pip python3-dev python3-setuptools
+pip3 install boto3
+pip3 install Pillow
 echo "///////////////////////////////////////////////////////////////////// aws-cli///////////////////////////////////////////////////"
 
 sudo apt-get -y install awscli
@@ -51,6 +54,9 @@ sudo cp pjain24/ITMO-544/Mid_Term/Frontend/gallery.php /var/www/html/
 sudo cp pjain24/ITMO-544/Mid_Term/config  ~/my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/config  /my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/config  /etc/my.cnf
+
+
+
 
 
 

@@ -104,10 +104,14 @@ echo "******************************************* Waiting to Register instance t
 #wait for instances to be registered
 aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer --instances $MYID
 
-echo "********************************************** Finished registering target instances ***************************************************"
+echo "********************************************** create SQS-topic ***************************************************"
 #echo "*********************************************** Creating DB - instance ****************************************************************"
 #create db instance
 #aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
+aws sqs create-queue --queue-name inclass-pjain
+aws sns create-topic --name project-messages-pjain
+aws dynamodb create-table --table-name RecordsPal --attribute-definitions AttributeName=Receipt,AttributeType=S AttributeName=Email,AttributeType=S --key-schema AttributeName=Receipt,KeyType=HASH AttributeName=Email,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+#aws dynamodb delete-table --table-name RecordsPal
 
 #echo "**************************************************** Created RDS instance **********************************************************************"
 echo "*************************************************** wait for DB - instance to be available ****************************************************"

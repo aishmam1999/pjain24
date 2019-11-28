@@ -6,7 +6,7 @@ session_start();
 require '/home/ubuntu/vendor/autoload.php';
 /////////////////////////////////////////////////////// RDS Client///////////////////////////////////////////////////
 // use Aws\Rds\RdsClient;
-// use Aws\S3\S3Client;
+use Aws\S3\S3Client;
 // use Aws\Exception\AwsException;
 
 
@@ -36,56 +36,29 @@ require '/home/ubuntu/vendor/autoload.php';
 // //$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";i
 // echo $endpoint;
 
-// echo $_POST['useremail'];
-// $uploaddir = '/tmp/';
-// $uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
+ echo $_POST['useremail'];
+ $uploaddir = '/tmp/';
+ $uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
 
 // echo $uploadfile;
 // echo '<pre>';
-// if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-//             echo "File is valid, and was successfully uploaded.\n";
-// } else {
-//             echo "Possible file upload attack!\n";
-// }
+ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+             echo "File is valid, and was successfully uploaded.\n";
+ } else {
+             echo "Possible file upload attack!\n";
+ }
 
 // echo 'Here is some more debugging info:';
 // print_r($_FILES);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////// Dynamodb /////////////////////////////////////////////
-use Aws\DynamoDb\DynamoDbClient;
-
-$client = new DynamoDbClient([
-    'profile' => 'default',
-    'region'  => 'us-east-1',
-    'version' => 'latest'
-]);
-
 
 # https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem
 # PHP UUID generator for Receipt- https://www.php.net/manual/en/function.uniqid.php
 
-$receipt = uniqid(); 
-echo $receipt;
-
-$result = $client->putItem([
-'Item' => [ // REQUIRED
-    'Receipt' => ['S' => $receipt],
-    'Email' => ['S' => $_POST['Email']],
-    'Phone' => ['S' => $_POST['phone']],
-    'Filename' => ['S' => $uploadfile],
-    'S3rawurl' => ['S' => $url],
-    'S3finishedurl' => ['S' => ''],     
-    'Status' => ['BOOL' => false],
-    'Issubscribed' => ['BOOL' => false]     
-    ],
-    'TableName' => 'RecordsPal', // REQUIRED
-    ]);
-
-print_r($result);
-
-
 ////////////////////////////////////////////////Dynamodb end////////////////////////////////////////////////////////////
-$s3 = new S3Client([
+
+ $s3 = new S3Client([
                 'region' => 'us-east-1',
                     'version' => '2006-03-01'
             ]);
@@ -100,7 +73,7 @@ $result = $s3->putObject([
                     'SourceFile' => $uploadfile,
                     'ACL' => 'public-read'
                 ]);
-echo $result;
+echo result;
 $url = $result['ObjectURL'];
 echo $url;
 
@@ -157,43 +130,35 @@ echo $result;
 $url2 = $result['ObjectURL'];
 echo $url2;
 /////////////////////////////////////////////////////////////////////////////////////////////
+use Aws\DynamoDb\DynamoDbClient;
+
+$client = new DynamoDbClient([
+            'profile' => 'default',
+                'region'  => 'us-east-1',
+                    'version' => 'latest'
+            ]);
 
 
-$connection = mysqli_connect($endpoint, "master", "p4ssw0rd");
+# https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem
+# # PHP UUID generator for Receipt- https://www.php.net/manual/en/function.uniqid.php
+#
+ $receipt = uniqid();
+ echo $receipt;
 
-if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ $result = $client->putItem([
+ 'Item' => [ // REQUIRED
+     'Receipt' => ['S' => $receipt],
+         'Email' => ['S' => $_POST['Email']],
+             'Phone' => ['S' => $_POST['phone']],
+                 'Filename' => ['S' => $uploadfile],
+                     'S3rawurl' => ['S' => $url],
+                         'S3finishedurl' => ['S' => ''],
+                             'Status' => ['BOOL' => false],
+                                 'Issubscribed' => ['BOOL' => false]
+                                     ],
+                                         'TableName' => 'RecordsPal', // REQUIRED
+                                             ]);
 
-$database = mysqli_select_db($connection, "records");
-$result = mysqli_query($connection, "SELECT * FROM items");
+                                             print_r($result);
 
-while($query_data = mysqli_fetch_row($result)) {
-                    echo "<tr>";
-                                  echo "<td>",$query_data[0], "</td>",
-                                                                        "<td>",$query_data[1], "</td>",
-                                                                                                    "<td>",$query_data[2], "</td>";
-                                  echo "</tr>";
-                      }
-if (!($stmt = $connection->prepare("INSERT INTO items (id, email,phone,filename,s3rawurl,s3finishedurl,status,issubscribed) VALUES (NULL,?,?,?,?,?,?,?)"))) {
-                      echo "Prepare failed: (" . $link->errno . ") " . $link->error;
-                        }
-
-$email = $_POST['useremail'];
-$phone = $_POST['phone'];
-  $s3rawurl = $url;
-  $filename = $key;
-    $s3finishedurl = $url2;
-    $status =1;
-      $issubscribed=0;
-
-      $stmt->bind_param("sssssii",$email,$phone,$filename,$s3rawurl,$s3finishedurl,$status,$issubscribed);
-
-        if (!$stmt->execute()) {
-                              echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-                                }else{
-
-                                          printf("%d Row inserted.\n", $stmt->affected_rows);
-                                            }
-
-        $stmt -> close();
-      $connection -> close();
 ?>

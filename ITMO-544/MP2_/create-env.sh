@@ -101,22 +101,24 @@ echo "****************************************** Register instance to load balan
 aws elb register-instances-with-load-balancer --load-balancer-name pjain24-load-balancer --instances $MYID
 
 echo "******************************************* Waiting to Register instance to load balancer ************************************************"
-#wait for instances to be registered
 aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer --instances $MYID
 
 echo "********************************************** create SQS-topic ***************************************************"
-#echo "*********************************************** Creating DB - instance ****************************************************************"
-#create db instance
-#aws rds create-db-instance --db-name records --allocated-storage 20 --db-instance-class db.t2.micro --db-instance-identifier pjain24-instance --engine mysql --master-username master --master-user-password p4ssw0rd
 aws sqs create-queue --queue-name inclass-pjain
 aws sns create-topic --name project-messages-pjain
 aws dynamodb create-table --table-name RecordsPal --attribute-definitions AttributeName=Receipt,AttributeType=S AttributeName=Email,AttributeType=S --key-schema AttributeName=Receipt,KeyType=HASH AttributeName=Email,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
-#aws dynamodb delete-table --table-name RecordsPal
 
-#echo "**************************************************** Created RDS instance **********************************************************************"
-echo "*************************************************** wait for DB - instance to be available ****************************************************"
-# wait for DB instace avaibility 
-#aws rds wait db-instance-available --db-instance-identifier pjain24-instance
-#connect to sql
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < 	.sql 
+echo "*************************************************** Auto-Consoling group ****************************************************"
 
+#Creating Auto Scaling Group
+#Create Launch Configuration
+echo "Creating launch configurations"
+
+aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp2-launch-config --key-name $4 --image-id $1 --security-groups $5 --instance-type t2.micro --user-data "file://./create-env-mp3.sh" --iam-instance-profile $6 --block-device-mappings "[{\"DeviceName\": \"/dev/xvdh\",\"Ebs\":{\"VolumeSize\":10}}]"
+echo "Creating auto scaling group"
+aws autoscaling create-auto-scaling-group --auto-scaling-group-name pjain-mp2-auto-scaling --launch-configuration-name pjain-mp2-launch-config --load-balancer-names pjain24-load-balancer --health-check-type ELB --health-check-grace-period 120 --min-size 2 --max-size 6 --desired-capacity 3 --default-cooldown 300 --availability-zones us-east-1a
+echo "autoscaling group created "
+
+
+#./create-env.sh $1= ami-0eb7af7225499cc83 $2=1 $3=t2.micro $4=MyKeyPair $5=sg-073198418b7ed762d $6=Inclass-2019 $7= subnet-8f3249b1
+#aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp2-launch-config --key-name MyKeyPair --image-id ami-0eb7af7225499cc83 --security-groups sg-073198418b7ed762d --instance-type t2.micro --user-data "file://./install-app-env-front-end.sh" --iam-instance-profile Inclass-2019 --block-device-mappings "[{\"DeviceName\": \"/dev/xvdh\",\"Ebs\":{\"VolumeSize\":10}}]"

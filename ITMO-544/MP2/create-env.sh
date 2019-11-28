@@ -114,7 +114,7 @@ echo "*************************************************** Auto-Consoling group *
 #Create Launch Configuration
 echo "Creating launch configurations"
 
-aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp2-launch-config --key-name $4 --image-id $1 --security-groups $5 --instance-type t2.micro --user-data "file://./create-env-mp3.sh" --iam-instance-profile $6 --block-device-mappings "[{\"DeviceName\": \"/dev/xvdh\",\"Ebs\":{\"VolumeSize\":10}}]"
+aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp2-launch-config --key-name $4 --image-id $1 --security-groups $5 --instance-type t2.micro --user-data "file://./install-app-env-front-end.sh" --iam-instance-profile $6 --block-device-mappings "[{\"DeviceName\": \"/dev/xvdh\",\"Ebs\":{\"VolumeSize\":10}}]"
 echo "Creating auto scaling group"
 aws autoscaling create-auto-scaling-group --auto-scaling-group-name pjain-mp2-auto-scaling --launch-configuration-name pjain-mp2-launch-config --load-balancer-names pjain24-load-balancer --health-check-type ELB --health-check-grace-period 120 --min-size 2 --max-size 6 --desired-capacity 3 --default-cooldown 300 --availability-zones us-east-1a
 echo "autoscaling group created "

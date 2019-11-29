@@ -6,6 +6,23 @@ use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 $email = $_POST['useremail'];
 //echo "$email";
+$result = $client->getItem([
+    'TableName' => 'RecordsXYZ',
+    'Key' => [
+                    'Receipt' => ['S' => '5dd31c34bdd98'],
+                    'Email' => ['S' => 'hajek@iit.edu'],
+            ],
+]);
+
+print_r($result);
+
+echo "Results: " . "\n";
+print_r($result['Item']['S3rawurl']['S']);
+
+
+
+
+
 $rdsclient = new Aws\Rds\RdsClient([
     'version' => '2014-10-31',
     'region' => 'us-east-1'

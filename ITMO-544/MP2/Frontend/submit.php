@@ -7,34 +7,6 @@ require '/home/ubuntu/vendor/autoload.php';
 /////////////////////////////////////////////////////// RDS Client///////////////////////////////////////////////////
 // use Aws\Rds\RdsClient;
 use Aws\S3\S3Client;
-// use Aws\Exception\AwsException;
-
-
-// $rdsclient = new Aws\Rds\RdsClient([
-//             'version' => '2014-10-31',
-//             'region' => 'us-east-1'
-//     ]);
-// try {
-//             $result = $rdsclient->describeDBInstances([
-//                 ]);
-//             foreach ($result['DBInstances'] as $instance) {
-//         print('<p>DB Identifier: ' . $instance['DBInstanceIdentifier']);
-//                 print('<br />Endpoint: ' . $instance['Endpoint']["Address"]);
-
-//                 print('<br />Current Status: ' . $instance["DBInstanceStatus"]);
-//         print('</p>');
-//     }
-//                 print(" Raw Result ");
-
-// } catch (AwsException $e) {
-//             // output error message if fails
-//              echo $e->getMessage();
-//                  echo "\n";
-// }
-
-// $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
-// //$endpoint = "pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com";i
-// echo $endpoint;
 
  echo $_POST['useremail'];
  $uploaddir = '/tmp/';
@@ -129,7 +101,7 @@ $result = $s3->putObject([
 echo $result;
 $url2 = $result['ObjectURL'];
 echo $url2;
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////// Dynamo DB //////////////////////////////////
 use Aws\DynamoDb\DynamoDbClient;
 
 $client = new DynamoDbClient([

@@ -52,6 +52,11 @@ then
 	echo "Provide valid subnet id"
 	exit 1
 fi
+if [ -z $8 ]
+then
+	echo "Lamda ARN"
+	exit 1
+fi
 
 ############
 
@@ -114,3 +119,10 @@ aws elb configure-health-check --load-balancer-name pjain24-load-balancer --heal
 
 #./create-env.sh $1= ami-0eb7af7225499cc83 $2=1 $3=t2.micro $4=MyKeyPair $5=sg-073198418b7ed762d $6=Inclass-2019 $7= subnet-8f3249b1
 #aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp2-launch-config --key-name MyKeyPair --image-id ami-0eb7af7225499cc83 --security-groups sg-073198418b7ed762d --instance-type t2.micro --user-data "file://./install-app-env-front-end.sh" --iam-instance-profile Inclass-2019 --block-device-mappings "[{\"DeviceName\": \"/dev/xvdh\",\"Ebs\":{\"VolumeSize\":10}}]"
+echo "********************************************** creating Lamdba Fucntion***************************************************************"
+
+#arn:aws:iam::382601412591:role/service-role/Class-2019
+aws lambda create-function --function-name pal-function --zip-file fileb://function.zip --handler process.handler --runtime python3.6 --role $8
+aws lambda add-permission --function-name pal-function --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com
+lambda=`aws lambda list-functions --query 'Functions[*].FunctionArn' --output text`
+aws s3api put-bucket-notification-configuration --bucket "pal-544-raw-bucket" --notification-configuration '{"LambdaFunctionConfigurations": [{"LambdaFunctionArn": "'$lambda'","Events": ["s3:ObjectCreated:*"]}]}'  

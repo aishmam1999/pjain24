@@ -173,7 +173,8 @@ else
 	
 	fi
 	
+
+
+aws lambda delete-function --function-name my-function
+
 fi
-
-
-

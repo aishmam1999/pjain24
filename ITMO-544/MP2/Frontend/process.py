@@ -22,3 +22,17 @@ def handler(event, context):
         s3_client.download_file(bucket, key, download_path)
         resize_image(download_path, upload_path)
         s3_client.upload_file(upload_path, '{}resized'.format(bucket), key)
+        # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
+        
+        url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
+        table = dynamodb.Table('RecordPal')
+        response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
+        client = boto3.client('sns')
+        response=client.publish(
+        PhoneNumber = '+13126786501',
+        Message="URL to Processed Image is" + key)
+
+
+
+

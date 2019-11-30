@@ -178,3 +178,4 @@ else
 aws lambda delete-function --function-name my-function
 
 fi
+pjain-mp2-launch-config

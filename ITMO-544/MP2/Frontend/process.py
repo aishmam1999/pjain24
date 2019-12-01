@@ -20,7 +20,7 @@ def resize_image(image_path, resized_path):
 def handler(event, context):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
-        key1 =unquote_plus(record['s3']['object']['key'])
+        key1 = unquote_plus(record['s3']['object']['key'])
         logger.info(key1)
 
         splitRecipit = key1.split('-')
@@ -28,15 +28,15 @@ def handler(event, context):
         key =splitRecipit[1]
         logger.info(Receipt1)
         logger.info(key)
-        download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
+        download_path = '/tmp/{}{}'.format(uuid.uuid4(), key1)
         upload_path = '/tmp/resized-{}'.format(key)
-        s3_client.download_file(bucket, key, download_path)
+        s3_client.download_file(bucket, key1, download_path)
         resize_image(download_path, upload_path)
         logger.info("resizeImage Finishe")
         logger.info(download_path)
         logger.info(upload_path)
 
-        s3_client.upload_file(upload_path, '{}resized'.format(bucket), key)
+        s3_client.upload_file(upload_path, '{}resized'.format(bucket), key1)
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
         url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 

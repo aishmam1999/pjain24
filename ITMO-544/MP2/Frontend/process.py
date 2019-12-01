@@ -25,7 +25,7 @@ def handler(event, context):
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
         url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         table = dynamodb.Table('RecordPal')
         response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
         client = boto3.client('sns')

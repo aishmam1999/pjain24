@@ -102,10 +102,10 @@ echo $result;
 $url2 = $result['ObjectURL'];
 echo $url2;
 ///////////////////////////////////////////////////////////////////////////////////////////// Dynamo DB //////////////////////////////////
+echo "----------------------------------------------------------------Dynamo DB Working -----------------------------------------------------";
 use Aws\DynamoDb\DynamoDbClient;
 
 $client = new DynamoDbClient([
-            'profile' => 'default',
                 'region'  => 'us-east-1',
                     'version' => 'latest'
             ]);
@@ -117,20 +117,27 @@ $client = new DynamoDbClient([
  $receipt = uniqid();
  echo $receipt;
 
- $result = $client->putItem([
- 'Item' => [ // REQUIRED
-     'Receipt' => ['S' => $receipt],
-         'Email' => ['S' => $_POST['Email']],
-             'Phone' => ['S' => $_POST['phone']],
-                 'Filename' => ['S' => $uploadfile],
-                     'S3rawurl' => ['S' => $url],
-                         'S3finishedurl' => ['S' => ''],
-                             'Status' => ['BOOL' => false],
-                                 'Issubscribed' => ['BOOL' => false]
-                                     ],
-                                         'TableName' => 'RecordsPal', // REQUIRED
-                                             ]);
+$useremail = $_POST['useremail'];
+$phone = $_POST['phone'];
+$file = $uploadfile;
 
-                                             print_r($result);
+$result = $client->putItem([
+          'Item' => [ // REQUIRED
+                       'Receipt' => ['S' => $receipt],
+                       'Email' => ['S' => $useremail],
+                       'Phone' => ['S' => $phone],
+                       'Filename' => ['S' => $file],
+                       'S3rawurl' => ['S' => $url],
+                       'S3finishedurl' => ['S' => ' '],
+                       'Status' => ['BOOL' => false],
+                       'Issubscribed' => ['BOOL' => false] ],
+
+                        'TableName' => 'RecordsPal', // REQUIRED
+
+                        ]);
+
+print_r($result);
+
+
 
 ?>

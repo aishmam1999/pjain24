@@ -100,7 +100,7 @@ aws elb wait any-instance-in-service --load-balancer-name pjain24-load-balancer 
 echo "********************************************** create SQS-topic ***************************************************"
 aws sqs create-queue --queue-name inclass-pjain
 aws sns create-topic --name project-messages-pjain
-aws dynamodb create-table --table-name RecordsPal --attribute-definitions AttributeName=Receipt,AttributeType=S AttributeName=Email,AttributeType=S --key-schema AttributeName=Receipt,KeyType=HASH AttributeName=Email,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+#aws dynamodb create-table --table-name RecordsPal --attribute-definitions AttributeName=Receipt,AttributeType=S AttributeName=Email,AttributeType=S --key-schema AttributeName=Receipt,KeyType=HASH AttributeName=Email,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 
 echo "*************************************************** Auto-Consoling group ****************************************************"
 

@@ -54,28 +54,11 @@ echo "//////////////////////////////////////////////////////////////////copying 
 sudo cp pjain24/ITMO-544/MP2/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/MP2/Frontend/submit.php /var/www/html/
 sudo cp pjain24/ITMO-544/MP2/Frontend/gallery.php /var/www/html/
+sudo cp pjain24/ITMO-544/MP2/Frontend/function.zip /home/ubuntu
+
 sudo cp pjain24/ITMO-544/MP2/config  ~/my.cnf
 sudo cp pjain24/ITMO-544/MP2/config  /my.cnf
 sudo cp pjain24/ITMO-544/MP2/config  /etc/my.cnf
-
-
-
-
-
-
-
-#sudo cp ~/my.cnf ~/.ssh/                                                                                                                                                                                                                                                              
-
-sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql ~
-sudo cp pjain24/ITMO-544/Mid_Term/createSchema.sql /home/ubuntu
-
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
-
-mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master "records"
-
-#mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
-
-
 
 
 

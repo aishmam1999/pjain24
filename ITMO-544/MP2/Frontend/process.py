@@ -40,7 +40,8 @@ def handler(event, context):
         table = dynamodb.Table('RecordsPal')
         response = table.query(
             KeyConditionExpression=Key('Receipt').eq(Receipt1)
-            )        
+            )
+        logger.info(response)
         email = response['Items'][0]['Email']
         receipt = "5de30aea7239e" 
         table.update_item(

@@ -55,22 +55,22 @@ echo "------------------------------------WORKS TILL HERE-----------------------
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$downloaddir = '/tmp/';
-$downloadfile = "$downloaddir$key";
+// $downloaddir = '/tmp/';
+// $downloadfile = "$downloaddir$key";
 
-echo "Attempting to download $key to $downloadfile";
-try{
-        $result = $s3->getObject(array(
-              'Bucket' => $bucket,
-              'Key' => $key,
-              'SaveAs' => $downloadfile));
-}       catch (AwsException $e) {
-         // output error message if fails
-             echo $e->getMessage();
-                 echo "\n";
-}
-echo $result;
-echo "------------------------------------DOWNLOADED RAW from S3-------------------------------";
+// echo "Attempting to download $key to $downloadfile";
+// try{
+//         $result = $s3->getObject(array(
+//               'Bucket' => $bucket,
+//               'Key' => $key,
+//               'SaveAs' => $downloadfile));
+// }       catch (AwsException $e) {
+//          // output error message if fails
+//              echo $e->getMessage();
+//                  echo "\n";
+// } 
+// echo $result;
+// echo "------------------------------------DOWNLOADED RAW from S3-------------------------------";
 
 // $newkey = "processed".$key;
 // $downloadfilepath = $downloaddir.$newkey;

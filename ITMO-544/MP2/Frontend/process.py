@@ -4,6 +4,7 @@ import sys
 import uuid
 from urllib.parse import unquote_plus
 from PIL import Image
+from boto3.dynamodb.conditions import Key, Attr
 import PIL.Image
 import logging
 logger = logging.getLogger()
@@ -23,9 +24,9 @@ def handler(event, context):
         logger.info(key1)
 
         splitRecipit = key1.split('-')
-        Receipt = splitRecipit[0]
+        Receipt1 = splitRecipit[0]
         key =splitRecipit[1]
-        logger.info(Receipt)
+        logger.info(Receipt1)
         logger.info(key)
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
         upload_path = '/tmp/resized-{}'.format(key)
@@ -37,16 +38,20 @@ def handler(event, context):
         url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         table = dynamodb.Table('RecordsPal')
-        #response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
+        response = table.query(
+            KeyConditionExpression=Key('Receipt').eq(Receipt1)
+            )        
+        email = response['Items'][0]['Email']
+        receipt = "5de30aea7239e" 
         table.update_item(
         Key={
-            'Receipt': Receipt,
+        'Receipt': receipt,
+        'Email': email
         },
         UpdateExpression='SET S3finishedurl = :val1',
         ExpressionAttributeValues={
-          ':val1': url
-        }
-    )
+        ':val1': url
+        })  
         client = boto3.client('sns')
         response=client.publish(
         PhoneNumber = '+13126786501',

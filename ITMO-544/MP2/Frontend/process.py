@@ -5,6 +5,9 @@ import uuid
 from urllib.parse import unquote_plus
 from PIL import Image
 import PIL.Image
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 s3_client = boto3.client('s3')
 
@@ -17,9 +20,13 @@ def handler(event, context):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
         key1 =unquote_plus(record['s3']['object']['key'])
+        logger.info(key1)
+
         splitRecipit = key1.split('-')
         Receipt = splitRecipit[0]
         key =splitRecipit[1]
+        logger.info(Receipt)
+        logger.info(key)
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
         upload_path = '/tmp/resized-{}'.format(key)
         s3_client.download_file(bucket, key, download_path)
@@ -33,17 +40,13 @@ def handler(event, context):
         #response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
         table.update_item(
         Key={
-        'Receipt': Receipt,
+            'Receipt': Receipt,
         },
         UpdateExpression='SET S3finishedurl = :val1',
         ExpressionAttributeValues={
           ':val1': url
         }
-)
-
-
-
-
+    )
         client = boto3.client('sns')
         response=client.publish(
         PhoneNumber = '+13126786501',

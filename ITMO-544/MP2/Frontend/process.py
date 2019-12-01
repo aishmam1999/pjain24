@@ -16,7 +16,10 @@ def resize_image(image_path, resized_path):
 def handler(event, context):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
-        key = unquote_plus(record['s3']['object']['key'])
+        key1 =unquote_plus(record['s3']['object']['key'])
+        splitRecipit = key1.split('-')
+        Receipt = splitRecipit[0]
+        key =splitRecipit[1]
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
         upload_path = '/tmp/resized-{}'.format(key)
         s3_client.download_file(bucket, key, download_path)
@@ -26,8 +29,21 @@ def handler(event, context):
         
         url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-        table = dynamodb.Table('RecordPal')
-        response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
+        table = dynamodb.Table('RecordsPal')
+        #response = table.put_item(Item={ 'S3finishedurl': {'S':url}})
+        table.update_item(
+        Key={
+        'Receipt': Receipt,
+        },
+        UpdateExpression='SET S3finishedurl = :val1',
+        ExpressionAttributeValues={
+          ':val1': url
+        }
+)
+
+
+
+
         client = boto3.client('sns')
         response=client.publish(
         PhoneNumber = '+13126786501',

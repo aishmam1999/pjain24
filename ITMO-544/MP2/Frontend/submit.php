@@ -92,9 +92,11 @@ $downloadfilepath = $downloaddir.$newkey;
 $bucket2="pal-544-finalize-bucket";
 echo "uploading $newkey from $downloadfile to $bucket2";
 echo $newkey;
+$receipt = uniqid();
+echo $receipt;
 $result = $s3->putObject([
                 'Bucket' => $bucket2,
-                    'Key' => $newkey,
+                    'Key' => $receipt-$newkey,
                     'SourceFile' => $downloadfilepath,
                     'ACL' => 'public-read'
                 ]);
@@ -114,8 +116,7 @@ $client = new DynamoDbClient([
 # https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem
 # # PHP UUID generator for Receipt- https://www.php.net/manual/en/function.uniqid.php
 #
- $receipt = uniqid();
- echo $receipt;
+
 
 $useremail = $_POST['useremail'];
 $phone = $_POST['phone'];

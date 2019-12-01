@@ -30,12 +30,16 @@ def handler(event, context):
         logger.info(key)
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key1)
         upload_path = '/tmp/resized-{}'.format(key)
+
+        logger.info('Downloading object {} from bucket {}'.format(key1, bucket))
         s3_client.download_file(bucket, key1, download_path)
         resize_image(download_path, upload_path)
+        
         logger.info("resizeImage Finishe")
         logger.info(download_path)
         logger.info(upload_path)
 
+        logger.info('Uploading object {} from bucket {}'.format(key1, bucket))
         s3_client.upload_file(upload_path, '{}resized'.format(bucket), key1)
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
@@ -49,10 +53,9 @@ def handler(event, context):
         email = response['Items'][0]['Email']
         logger.info(email)
 
-        receipt = "5de30aea7239e" 
         table.update_item(
         Key={
-        'Receipt': receipt,
+        'Receipt': Receipt1,
         'Email': email
         },
         UpdateExpression='SET S3finishedurl = :val1',

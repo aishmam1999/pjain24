@@ -89,7 +89,7 @@ $downloadfilepath = $downloaddir.$newkey;
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-$bucket2="pal-544-finalize-bucket";
+$bucket2="pal-544-raw-bucketresized";
 echo "uploading $newkey from $downloadfile to $bucket2";
 echo $newkey;
 $receipt = uniqid();

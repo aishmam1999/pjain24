@@ -208,3 +208,52 @@ vim ~/.my.cnf
 
 mysql --host=pjain24-instance.cvs4vczdbufc.us-east-1.rds.amazonaws.com -u master < createSchema.sql 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+create-env.sh
+    Create SQS Message Queue here
+    Create SNS Topic here
+    Create Dynamo DB table
+    Create ELB, Autoscling, Launch Conf (all attaching as well)
+
+install-app-env-front-end.sh (no RDS)
+    Install Composer, php dependencies (sans mysql)
+    Git clone    -- deploy front end code (index, submit, gallery)
+
+install-app-env-back-end.sh  (undergrads)  Additional EC2 instance to process SQS messages (jobs)
+    Grads will use Lamda functions
+    Install Composer, php dependencies (sans mysql)
+    Git clone application -- deploy backend end code (process.php)
+    [No need for webserver, just run PHP directly] Perhaps setup a cron job 
+
+destroy.sh
+It does what it does
+
+index.php (form)
+    Name 
+    email
+    Phone
+    submit image
+    Post to submit.php
+
+submit.php(php)
+    Insert in DynamoDB
+    PHP create SQS message containing UUID
+    Subscribe user (phone) to SNS topic
+
+process.php (seperate)
+    loop reading the queue looking for messages
+    Once it finds one, select all the information from DynmoDB based on the UUID
+    Modify image
+    Update DynamoDB table
+    Publish to the SNS endpoint or SNS topic 
+    Delete SQS message 
+
+gallery.php
+    Select * from DynamoDB table and display
+
+
+    https://www.youtube.com/watch?v=Vdjt59dh0gs  for lamda upload and execute
+     aws lambda create-function     --function-name my-function3444     --runtime python3.6    --zip-file fileb://function.zip     --handler process.handler     --role arn:aws:iam::382601412591:role/service-role/Class-2019
+     vagrant@ubuntu-bionic:~/v-env/lib64/python3.6/site-packages$ zip -g ~/function.zip .
+
+     aws lambda add-permission --function-name my-funtion --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com

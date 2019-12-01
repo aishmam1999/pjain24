@@ -5,7 +5,7 @@ session_start();
 // of $_FILES.
 require '/home/ubuntu/vendor/autoload.php';
 /////////////////////////////////////////////////////// RDS Client///////////////////////////////////////////////////
-// use Aws\Rds\RdsClient;
+use Aws\DynamoDb\DynamoDbClient;
 use Aws\S3\S3Client;
  
 $useremail = $_POST['useremail'];
@@ -21,9 +21,9 @@ $file = $uploadfile;
              echo "Possible file upload attack!\n";
  }
 
- $s3 = new S3Client([
+$s3 = new S3Client([
                 'region' => 'us-east-1',
-                    'version' => '2006-03-01'
+                'version' => '2006-03-01'
             ]);
 
 $receipt = uniqid();
@@ -32,7 +32,7 @@ echo $receipt;
 $bucket="pal-544-raw-bucket";
 $newkey = $_FILES['userfile']['name'];
 
-echo ".....................................................";
+echo ".....................................................\n";
 echo $newkey, $uploadfile;
 
 $result = $s3->putObject([
@@ -47,28 +47,24 @@ echo $url;
 
 echo "------------------------------------WORKS TILL HERE-------------------------------";
 
-use Aws\DynamoDb\DynamoDbClient;
-
 $client = new DynamoDbClient([
                 'region'  => 'us-east-1',
-                    'version' => 'latest'
+                'version' => 'latest'
             ]);
 
-$result = $client->putItem([
-          'Item' => [ // REQUIRED
-                       'Receipt' => ['S' => $receipt],
-                       'Email' => ['S' => $useremail],
-                       'Phone' => ['S' => $phone],
-                       'Filename' => ['S' => $file],
-                       'S3rawurl' => ['S' => $url],
-                       'S3finishedurl' => ['S' => ' '],
-                       'Status' => ['BOOL' => false],
-                       'Issubscribed' => ['BOOL' => false] 
+            $result = $client->putItem([
+                'Item' => [ // REQUIRED
+                    'Receipt' => ['S' => $receipt],
+                    'Email' => ['S' => $useremail],
+                    'Phone' => ['S' => $phone],
+                    'Filename' => ['S' => $uploadfile],
+                    'S3rawurl' => ['S' => $url],
+                    'S3finishedurl' => ['S' => 'NA'],     
+                    'Status' => ['BOOL' => false],
+                    'Issubscribed' => ['BOOL' => false]     
                     ],
-            'TableName' => 'RecordsPal', // REQUIRED
-
-                        ]);
-
+                    'TableName' => 'RecordsPal', // REQUIRED
+                    ]);
 print_r($result);
 
 ?>

@@ -34,14 +34,15 @@ use Aws\S3\S3Client;
                 'region' => 'us-east-1',
                     'version' => '2006-03-01'
             ]);
-
+$receipt = uniqid();
+echo $receipt;
 $bucket="pal-544-raw-bucket";
-$key = $_FILES['userfile']['name'];
+$newkey = $_FILES['userfile']['name'];
 echo ".....................................................";
 echo $key, $uploadfile;
 $result = $s3->putObject([
                 'Bucket' => $bucket,
-                    'Key' => $key,
+                    'Key' => $receipt.'-'.$newkey,
                     'SourceFile' => $uploadfile,
                     'ACL' => 'public-read'
                 ]);
@@ -71,38 +72,37 @@ try{
 echo $result;
 echo "------------------------------------DOWNLOADED RAW from S3-------------------------------";
 
-$newkey = "processed".$key;
-$downloadfilepath = $downloaddir.$newkey;
-////////////////////////////////////////////////////////////////////////////////////
-    $im = imagecreatefrompng($downloadfile);
-        echo $im;
-    if($im && imagefilter($im, IMG_FILTER_GRAYSCALE))
-    {
-                imagepng($im, $downloadfilepath);
-                echo "Image converted to grayscale. Original Image: $im PRocessed Key: $newkey";
-    }
-    else
-    {
-                echo 'Conversion to grayscale failed.';
-    }
-    echo "------------------------------------Converted to GrayScale-------------------------------";
+// $newkey = "processed".$key;
+// $downloadfilepath = $downloaddir.$newkey;
+// ////////////////////////////////////////////////////////////////////////////////////
+//     $im = imagecreatefrompng($downloadfile);
+//         echo $im;
+//     if($im && imagefilter($im, IMG_FILTER_GRAYSCALE))
+//     {
+//                 imagepng($im, $downloadfilepath);
+//                 echo "Image converted to grayscale. Original Image: $im PRocessed Key: $newkey";
+//     }
+//     else
+//     {
+//                 echo 'Conversion to grayscale failed.';
+//     }
+//     echo "------------------------------------Converted to GrayScale-------------------------------";
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-$bucket2="pal-544-raw-bucketresized";
-echo "uploading $newkey from $downloadfile to $bucket2";
-echo $newkey;
-$receipt = uniqid();
-echo $receipt;
-$result = $s3->putObject([
-                'Bucket' => $bucket2,
-                    'Key' => $receipt.'-'.$newkey,
-                    'SourceFile' => $downloadfilepath,
-                    'ACL' => 'public-read'
-                ]);
-echo $result;
-$url2 = $result['ObjectURL'];
-echo $url2;
+// $bucket2="pal-544-raw-bucketresized";
+// echo "uploading $newkey from $downloadfile to $bucket2";
+// echo $newkey;
+
+// $result = $s3->putObject([
+//                 'Bucket' => $bucket2,
+//                     'Key' => $receipt.'-'.$newkey,
+//                     'SourceFile' => $downloadfilepath,
+//                     'ACL' => 'public-read'
+//                 ]);
+// echo $result;
+// $url2 = $result['ObjectURL'];
+// echo $url2;
 ///////////////////////////////////////////////////////////////////////////////////////////// Dynamo DB //////////////////////////////////
 echo "----------------------------------------------------------------Dynamo DB Working -----------------------------------------------------";
 use Aws\DynamoDb\DynamoDbClient;

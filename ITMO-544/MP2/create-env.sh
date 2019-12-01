@@ -129,7 +129,7 @@ aws dynamodb describe-table --table-name RecordsPal
 echo "********************************************** creating Lamdba Fucntion***************************************************************"
 
 #arn:aws:iam::382601412591:role/service-role/Class-2019
-aws lambda create-function --function-name pal-function --zip-file fileb://function.zip --handler process.handler --runtime python3.6 --role arn:aws:iam::382601412591:role/service-role/Class-2019
+aws lambda create-function --function-name pal-function --zip-file fileb://function.zip --handler process.handler --runtime python3.6 --role $8 #arn:aws:iam::382601412591:role/service-role/Class-2019
 aws lambda add-permission --function-name pal-function --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com
 
 lambda=`aws lambda list-functions --query 'Functions[*].FunctionArn' --output text`

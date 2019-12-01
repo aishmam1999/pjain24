@@ -32,6 +32,10 @@ def handler(event, context):
         upload_path = '/tmp/resized-{}'.format(key)
         s3_client.download_file(bucket, key, download_path)
         resize_image(download_path, upload_path)
+        logger.info("resizeImage Finishe")
+        logger.info(download_path)
+        logger.info(upload_path)
+
         s3_client.upload_file(upload_path, '{}resized'.format(bucket), key)
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
@@ -43,6 +47,8 @@ def handler(event, context):
             )
         logger.info(response)
         email = response['Items'][0]['Email']
+        logger.info(email)
+
         receipt = "5de30aea7239e" 
         table.update_item(
         Key={
@@ -52,7 +58,8 @@ def handler(event, context):
         UpdateExpression='SET S3finishedurl = :val1',
         ExpressionAttributeValues={
         ':val1': url
-        })  
+        }) 
+        logger.info("table is updated")
         client = boto3.client('sns')
         response=client.publish(
         PhoneNumber = '+13126786501',

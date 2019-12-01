@@ -68,7 +68,7 @@ echo "------------------------------------WORKS TILL HERE-----------------------
 //          // output error message if fails
 //              echo $e->getMessage();
 //                  echo "\n";
-// } 
+// }    
 // echo $result;
 // echo "------------------------------------DOWNLOADED RAW from S3-------------------------------";
 

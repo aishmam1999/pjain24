@@ -96,7 +96,7 @@ $receipt = uniqid();
 echo $receipt;
 $result = $s3->putObject([
                 'Bucket' => $bucket2,
-                    'Key' => $receipt-$newkey,
+                    'Key' => $receipt.'-'.$newkey,
                     'SourceFile' => $downloadfilepath,
                     'ACL' => 'public-read'
                 ]);

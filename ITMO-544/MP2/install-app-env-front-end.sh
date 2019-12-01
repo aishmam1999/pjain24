@@ -48,10 +48,10 @@ echo "/////////////////////////////////////////////////////////////////github re
 sudo git clone https://palashjain2801:28011993p.j@github.com/illinoistech-itm/pjain24
 
 echo "//////////////////////////////////////////////////////////////////copying index.php to /var/www/html///////////////////////////////////////////////////"
-sudo cp pjain24/ITMO-544/Mid_Term/Frontend/index.php /var/www/html/
-sudo cp pjain24/ITMO-544/Mid_Term/Frontend/submit.php /var/www/html/
-sudo cp pjain24/ITMO-544/Mid_Term/Frontend/gallery.php /var/www/html/
-sudo cp pjain24/ITMO-544/Mid_Term/config  ~/my.cnf
+sudo cp pjain24/ITMO-544/MP2/Frontend/index.php /var/www/html/
+sudo cp pjain24/ITMO-544/MP2/Frontend/submit.php /var/www/html/
+sudo cp pjain24/ITMO-544/MP2/Frontend/gallery.php /var/www/html/
+sudo cp pjain24/ITMO-544/MP2/config  ~/my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/config  /my.cnf
 sudo cp pjain24/ITMO-544/Mid_Term/config  /etc/my.cnf
 

@@ -28,10 +28,13 @@ $file = $uploadfile;
 
 $receipt = uniqid();
 echo $receipt;
+
 $bucket="pal-544-raw-bucket";
 $newkey = $_FILES['userfile']['name'];
+
 echo ".....................................................";
-echo $key, $uploadfile;
+echo $newkey, $uploadfile;
+
 $result = $s3->putObject([
                 'Bucket' => $bucket,
                     'Key' => $receipt.'-'.$newkey,
@@ -43,7 +46,6 @@ $url = $result['ObjectURL'];
 echo $url;
 
 echo "------------------------------------WORKS TILL HERE-------------------------------";
-
 
 use Aws\DynamoDb\DynamoDbClient;
 
@@ -61,9 +63,9 @@ $result = $client->putItem([
                        'S3rawurl' => ['S' => $url],
                        'S3finishedurl' => ['S' => ' '],
                        'Status' => ['BOOL' => false],
-                       'Issubscribed' => ['BOOL' => false] ],
-
-                        'TableName' => 'RecordsPal', // REQUIRED
+                       'Issubscribed' => ['BOOL' => false] 
+                    ],
+            'TableName' => 'RecordsPal', // REQUIRED
 
                         ]);
 

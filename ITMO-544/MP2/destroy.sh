@@ -135,47 +135,15 @@ fi
 
 
 ############
+echo "Deleting AutoScaling Configration"
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name pjain-mp2-auto-scaling --force-delete
 
-#Delete RDS
+echo "Deleting AutoScaling Group"
 
-rdsval=`aws rds describe-db-instances --db-instance-identifier pjain24-instance`
+aws autoscaling delete-launch-configuration --launch-configuration-name pjain-mp2-launch-config
 
-if [ "$?" -ne "0" ]
-then
-	echo "No RDS to delete"
-else
+echo "Deleting Lambdafuntion"
+aws lambda delete-function --function-name pal-function
+echo "Deleting Table"
 
-	if [ ! -z "$rdsval" ]
-	then
-		
-		aws rds delete-db-instance --db-instance-identifier pjain24-instance-db-read --skip-final-snapshot >/dev/null 2>&1
-		
-		if [ "$?" -ne "0" ]
-		then
-			echo "Either RDS Read Reaplica is being deleted or pending. Try again in a while."
-		else
-			echo "RDS Read Replica Delete initiated"
-		fi
-		
-		aws rds delete-db-instance --db-instance-identifier pjain24-instance-db --skip-final-snapshot >/dev/null 2>&1
-		
-		if [ "$?" -ne "0" ]
-		then
-			echo "Either RDS is being deleted or pending. Try again in a while."
-		else
-			echo "RDS Delete initiated"
-		fi			
-	
-
-	else
-
-		echo "No RDS to delete"
-	
-	fi
-	
-
-
-aws lambda delete-function --function-name my-function
-
-fi
-pjain-mp2-launch-config
+aws dynamodb delete-table --table-name RecordsPal

@@ -1,11 +1,11 @@
 # Done By : Palash Jain
 # MidTerm Project 2
 
-# Make Sure
-## AMI image - ami-0eb7af7225499cc83 
-## NOTE : If submit page or anything doesn't appear , please restart apache2
-## NOTE: It might Take some time to Recieve MSG 
-## NOTE : Funtion.zip contains dependencies and process.py(i.e Lamda function). Make sure it is available at same place from where create-env is executed 
+## Make Sure
+### AMI image - ami-0eb7af7225499cc83 
+### NOTE : If submit page or anything doesn't appear , please restart apache2
+### NOTE: It might Take some time to Recieve MSG 
+### NOTE : Funtion.zip contains dependencies and process.py(i.e Lamda function). Make sure it is available at same place from where create-env is executed 
 
 
 ## My Project has Two Part 1> FrontEnd 2> Backend

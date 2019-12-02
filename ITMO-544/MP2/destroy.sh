@@ -32,20 +32,20 @@ then
 
 		#Deregister Load Balancers instances
 
-		if [ ! -z "$InstanceIdList" ]
-		then
-			echo "Deregister instances from load balancer"
-			tempVar=`aws elb deregister-instances-from-load-balancer --load-balancer-name ${arrLoadBalancerList[$i-1]} --instances $InstanceIdList`
+		# if [ ! -z "$InstanceIdList" ]
+		# then
+		# 	echo "Deregister instances from load balancer"
+		# 	tempVar=`aws elb deregister-instances-from-load-balancer --load-balancer-name ${arrLoadBalancerList[$i-1]} --instances $InstanceIdList`
 			
-			if [ "$?" -ne "0" ]
-			then
-				echo "Terminate Script"
-				exit 1;
-			fi
+		# 	if [ "$?" -ne "0" ]
+		# 	then
+		# 		echo "Terminate Script"
+		# 		exit 1;
+		# 	fi
 			
-			echo "Instances deregistered"
+		# 	echo "Instances deregistered"
 			
-		fi
+		# fi
 
 		############
 

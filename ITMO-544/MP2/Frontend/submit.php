@@ -60,7 +60,7 @@ $client = new DynamoDbClient([
                     'S3rawurl' => ['S' => $url],
                     'S3finishedurl' => ['S' => 'NA'],
                     'Status' => ['BOOL' => false],
-                    'Issubscribed' => ['BOOL' => True]
+                    'Issubscribed' => ['BOOL' => true]
                     ],
                     'TableName' => 'RecordsPal', // REQUIRED
                     ]);

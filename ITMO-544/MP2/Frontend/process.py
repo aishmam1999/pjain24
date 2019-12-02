@@ -43,7 +43,7 @@ def handler(event, context):
         s3_client.upload_file(upload_path, '{}resized'.format(bucket), key1,ExtraArgs={'ACL': 'public-read'})
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
-        url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 
+        url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key1 
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         table = dynamodb.Table('RecordsPal')
         response = table.query(

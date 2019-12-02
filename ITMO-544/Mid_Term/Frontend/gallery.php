@@ -49,6 +49,7 @@ for ($i=0; $i <= $len; $i++) {
     echo "\n";
     print_r($result['Items'][$i]['S3finishedurl']['S']);
     $finalimage = $result['Items'][$i]['S3finishedurl']['S'];
+    
     echo "<tr><td><img src= $finalimage ></td> </tr>";
 
 

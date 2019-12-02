@@ -20,7 +20,7 @@
 ## Backend
 
 #### install-app-front-env.sh : install all Requirements needed for Project add composer 
-#### create-env.sh :  is used to create ec2-instace , loadbalancer, RDS etc 
+#### create-env.sh :  is used to create ec2-instace , loadbalancer, Dynamodb etc 
 #### destory create ec2-instance , loadbalacer ,Dynamodb etc 
 #### Lambda funtion to process image and update dynamo db
 #### User will recive SMS after image get processed

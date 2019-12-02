@@ -30,25 +30,27 @@ $result = $client->scan([
     'ProjectionExpression' => '#S3F, #S3R',
     'TableName' => 'RecordsPal',
 ]);
-print_r($result);
-echo "------------------------------------WORKS TILL HERE-------------------------------";
+#print_r($result);
+
+#echo "------------------------------------WORKS TILL HERE-------------------------------";
 
 # retrieve the number of elements being returned -- use this to control the for loop
 $len = $result['Count'];
-echo "Len: " . $len . "\n";
-print_r($result['Items'][0]['S3rawurl']['S']);
-echo "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n";
-echo($result['Items'][0]['S3rawurl']['S']);
+#echo "Len: " . $len . "\n";
+#print_r($result['Items'][0]['S3rawurl']['S']);
+#echo "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n";
+#echo($result['Items'][0]['S3rawurl']['S']);
 
-print_r($result['Items'][0]['S3finishedurl']['S']);
-echo "//////////////////////////////////////////////////\n";
+#print_r($result['Items'][0]['S3finishedurl']['S']);
+#echo "//////////////////////////////////////////////////\n";
 # for loop to iterate through all the elements of the returned matches
 for ($i=0; $i <= $len; $i++) {
     echo "\n";
     //print_r($result['Items'][$i]['S3rawurl']['S']);
     echo "\n";
-    print_r($result['Items'][$i]['S3finishedurl']['S']);
+ #   print_r($result['Items'][$i]['S3finishedurl']['S']);
     $finalimage = $result['Items'][$i]['S3finishedurl']['S'];
+    echo $finalImage;
     echo "<tr><td><img src= $finalimage ></td> </tr>";
 
 

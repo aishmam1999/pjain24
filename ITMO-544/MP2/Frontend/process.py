@@ -14,7 +14,8 @@ s3_client = boto3.client('s3')
 
 def resize_image(image_path, resized_path):
     with Image.open(image_path) as image:
-        image.thumbnail(tuple(x / 2 for x in image.size))
+        size = (100, 100)
+        image.thumbnail(size)
         image.save(resized_path)
 
 def handler(event, context):

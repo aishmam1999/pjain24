@@ -7,15 +7,14 @@ require '/home/ubuntu/vendor/autoload.php';
 /////////////////////////////////////////////////////// RDS Client///////////////////////////////////////////////////
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\S3\S3Client;
- 
+
 $useremail = $_POST['useremail'];
 $phone = $_POST['phone'];
-$file = $uploadfile;
 
- $uploaddir = '/tmp/';
- $uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
+$uploaddir = '/tmp/';
+$uploadfile = $uploaddir . basename($_FILES['userfile']['tmp_name']);
 
- if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
              echo "File is valid, and was successfully uploaded.\n";
  } else {
              echo "Possible file upload attack!\n";
@@ -59,9 +58,9 @@ $client = new DynamoDbClient([
                     'Phone' => ['S' => $phone],
                     'Filename' => ['S' => $uploadfile],
                     'S3rawurl' => ['S' => $url],
-                    'S3finishedurl' => ['S' => 'NA'],     
+                    'S3finishedurl' => ['S' => 'NA'],
                     'Status' => ['BOOL' => false],
-                    'Issubscribed' => ['BOOL' => false]     
+                    'Issubscribed' => ['BOOL' => false]
                     ],
                     'TableName' => 'RecordsPal', // REQUIRED
                     ]);

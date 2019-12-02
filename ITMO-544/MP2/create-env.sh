@@ -112,7 +112,7 @@ aws autoscaling create-launch-configuration --launch-configuration-name pjain-mp
 echo "Creating auto scaling group"
 aws autoscaling create-auto-scaling-group --auto-scaling-group-name pjain-mp2-auto-scaling --launch-configuration-name pjain-mp2-launch-config --load-balancer-names pjain24-load-balancer --health-check-type ELB --health-check-grace-period 120 --min-size 2 --max-size 6 --desired-capacity 3 --default-cooldown 300 --availability-zones us-east-1a
 echo "autoscaling group created "
-
+#attaching loadbalancer to autoscaling 
 echo "**********************************************Performing health check***************************************************************"
 #health check
 aws elb configure-health-check --load-balancer-name pjain24-load-balancer --health-check Target=HTTP:80/png,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3

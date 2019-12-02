@@ -254,6 +254,20 @@ gallery.php
 
     https://www.youtube.com/watch?v=Vdjt59dh0gs  for lamda upload and execute
      aws lambda create-function     --function-name my-function3444     --runtime python3.6    --zip-file fileb://function.zip     --handler process.handler     --role arn:aws:iam::382601412591:role/service-role/Class-2019
-     vagrant@ubuntu-bionic:~/v-env/lib64/python3.6/site-packages$ zip -g ~/function.zip .
+     /////////////////////////////////////////////////////////////////////
+     sudo cp pjain24/ITMO-544/MP2/Frontend/process.py  ~/v-env/lib64/python3.6/site-packages
+     cd ~/v-env/lib64/python3.6/site-packages
+     zip -g ~/function.zip process.py
+     cd ~
+     aws lambda delete-function --function-name pal-function
+
+     aws lambda create-function --function-name pal-function --zip-file fileb://function.zip --handler process.handler --runtime python3.6 --role arn:aws:iam::382601412591:role/service-role/Class-2019
+     aws lambda add-permission --function-name pal-function --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com
+
+     lambda=`aws lambda list-functions --query 'Functions[*].FunctionArn' --output text`
+     aws s3api put-bucket-notification-configuration --bucket "pal-544-raw-bucket" --notification-configuration '{"LambdaFunctionConfigurations": [{"LambdaFunctionArn": "'$lambda'","Events": ["s3:ObjectCreated:*"]}]}'  
+     /////////////////////////////////////////////////////////////////////////////////////////
+     
+     vagrant@ubuntu-bionic:~/v-env/lib64/python3.6/site-packages$ zip -g ~/function.zip process.py
 
      aws lambda add-permission --function-name my-funtion --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com

@@ -40,7 +40,7 @@ def handler(event, context):
         logger.info(upload_path)
 
         logger.info('Uploading object {} from bucket {}'.format(key1, bucket))
-        s3_client.upload_file(upload_path, '{}resized'.format(bucket), key1)
+        s3_client.upload_file(upload_path, '{}resized'.format(bucket), key1,ExtraArgs={'ACL': 'public-read'})
         # url =  http://s3-REGION-.amazonaws.com/BUCKET-NAME/KEY
         
         url = "https://pal-544-raw-bucketresized.s3.amazonaws.com/"+key 

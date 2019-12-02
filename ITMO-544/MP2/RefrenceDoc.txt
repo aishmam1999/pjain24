@@ -271,3 +271,4 @@ gallery.php
      vagrant@ubuntu-bionic:~/v-env/lib64/python3.6/site-packages$ zip -g ~/function.zip process.py
 
      aws lambda add-permission --function-name my-funtion --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com
+#./create-env.sh ami-0eb7af7225499cc83 1 t2.micro MyKeyPair sg-073198418b7ed762d Inclass-2019 subnet-8f3249b1 arn:aws:iam::382601412591:role/service-role/Class-2019

@@ -134,4 +134,4 @@ aws lambda create-function --function-name pal-function --zip-file fileb://funct
 aws lambda add-permission --function-name pal-function --action lambda:InvokeFunction --statement-id 1 --principal s3.amazonaws.com
 
 lambda=`aws lambda list-functions --query 'Functions[*].FunctionArn' --output text`
-aws s3api put-bucket-notification-configuration --bucket "pal-544-raw-bucket" --notification-configuration '{"LambdaFunctionConfigurations": [{"LambdaFunctionArn": "'$lambda'","Events": ["s3:ObjectCreated:*"]}]}'  
+aws s3api put-bucket-notification-configuration --bucket "pal-544-raw-bucket" --notification-configuration '{"LambdaFunctionConfigurations": [{"LambdaFunctionArn": "'$lambda'","Events": ["s3:ObjectCreated:*"]}]}'

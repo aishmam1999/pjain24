@@ -1,7 +1,8 @@
 # Done By : Palash Jain
-# MidTerm Project 
+# MidTerm Project 2
 
 # Make Sure
+## AMI image - ami-0eb7af7225499cc83 
 ## NOTE : ONLY PNG Format is Supported 
 ## NOTE : Make sure createschema.sql file is copied and added ran (Sometimes it doesn't get copy)
 ## NOTE : If submit page or anything doesn't appear , please restart apache2

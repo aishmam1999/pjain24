@@ -19,6 +19,6 @@
 #### create-env.sh :  is used to create ec2-instace , loadbalancer, RDS etc 
 #### destory create ec2-instance , loadbalacer ,Dynamodb etc 
 #### Lambda funtion to process image and update dynamo db
-
+#### User will recive SMS after image get processed
 
 # All the givien requairent should be full-filled before getting output

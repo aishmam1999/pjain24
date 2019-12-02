@@ -59,9 +59,11 @@ def handler(event, context):
         'Receipt': Receipt1,
         'Email': email
         },
-        UpdateExpression='SET S3finishedurl = :val1',
+        UpdateExpression='SET S3finishedurl = :val1',"Issubscribed = :val2", "Status = :val3",
         ExpressionAttributeValues={
-        ':val1': url
+        ':val1': url,
+        ':val2': True,
+        ':val3' : True
         }) 
         logger.info("table is updated")
         client = boto3.client('sns')

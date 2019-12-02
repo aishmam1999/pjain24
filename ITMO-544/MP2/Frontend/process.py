@@ -52,21 +52,30 @@ def handler(event, context):
             )
         logger.info(response)
         email = response['Items'][0]['Email']
+        number = response['Items'][0]['Phone']
         logger.info(email)
 
-        table.update_item(
-        Key={
-        'Receipt': Receipt1,
-        'Email': email
-        },
-        UpdateExpression='SET S3finishedurl = :val1',
-        ExpressionAttributeValues={
-        ':val1': url
-        }) 
+
+        dynamo_client = boto3.client(service_name='dynamodb')
+        db_resp = dynamo_client.update_item(
+            TableName='RecordsPal',
+            Key={
+                'Receipt': {'S': Receipt1},
+                'Email': {'S':  email}
+                },
+            UpdateExpression="set S3finishedurl=:processed_url, #processed = :processed",
+            ExpressionAttributeValues={
+                ':processed_url': {'S': url},
+                ':processed': {'BOOL': True}
+                },
+            ExpressionAttributeNames={"#processed": "Status"},
+            ReturnValues="UPDATED_NEW"
+            )
+         
         logger.info("table is updated")
         client = boto3.client('sns')
         response=client.publish(
-        PhoneNumber = '+13126786501',
+        PhoneNumber = number,
         Message="URL to Processed Image is" + key)
 
 

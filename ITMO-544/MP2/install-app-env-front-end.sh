@@ -54,7 +54,7 @@ echo "//////////////////////////////////////////////////////////////////copying 
 sudo cp pjain24/ITMO-544/MP2/Frontend/index.php /var/www/html/
 sudo cp pjain24/ITMO-544/MP2/Frontend/submit.php /var/www/html/
 sudo cp pjain24/ITMO-544/MP2/Frontend/gallery.php /var/www/html/
-sudo cp pjain24/ITMO-544/MP2/Frontend/function.zip /home/ubuntu
+sudo cp pjain24/ITMO-544/MP2/Frontend/function.zip /home/ubuntu/
 
 sudo cp pjain24/ITMO-544/MP2/config  ~/my.cnf
 sudo cp pjain24/ITMO-544/MP2/config  /my.cnf

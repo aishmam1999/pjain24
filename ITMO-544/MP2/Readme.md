@@ -30,4 +30,3 @@
 
 #### process.py : Contains code of lambda funtion (includes process image code and SNS code )
 
-# All the givien requairent should be full-filled before getting output

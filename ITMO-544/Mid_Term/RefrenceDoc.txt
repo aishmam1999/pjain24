@@ -1,3 +1,9 @@
+///////////////
+pjain24-instance RDS
+mp2 s3 bucket name should end woth resized
+///////////////////
+
+
 vanilla instance = aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d
 mine = ./install.sh ami-07d0cf3af28718ef8 2 t2.micro MyKeyPair sg-073198418b7ed762d
 aws ec2 run-instances --image-id ami-07d0cf3af28718ef8 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-073198418b7ed762d           
